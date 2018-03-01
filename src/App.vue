@@ -10,22 +10,19 @@
         </v-list-tile>
       </v-list>
     </v-toolbar>
+    <layer-control :layers="layers" :map="map"></layer-control>
   </v-navigation-drawer>
-  <layer-control :layers="layers" :map="map"></layer-control>
   <v-toolbar color="indigo" dark fixed app>
     <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
     <v-toolbar-title>Safer schools viewer</v-toolbar-title>
   </v-toolbar>
   <v-content>
     <div id="map">
+      <v-mapbox access-token="pk.eyJ1IjoiY2FtdmR2cmllcyIsImEiOiJjajA4NXdpNmswMDB2MzNzMjk4dGM2cnhzIn0.lIwd8N7wf0hx7mq-kjTcbQ" map-style="mapbox://styles/mapbox/satellite-streets-v10" :center="[34.85752836605343, -19.830506337137294]" :zoom="10" :pitch="60" :bearing="-132"
+        :min-zoom="5" id="map" ref="map">
+        <v-hazards></v-hazards>
+        <v-exposure-layers></v-exposure-layers>
 
-      <v-mapbox
-      access-token="pk.eyJ1Ijoic2lnZ3lmIiwiYSI6Il8xOGdYdlEifQ.3-JZpqwUa3hydjAJFXIlMA"
-      map-style="mapbox://styles/mapbox/satellite-streets-v10"
-      :center="[34.85752836605343, -19.830506337137294]"
-      :zoom="10" :pitch="60" :bearing="-132" :min-zoom="5"
-        id="map" ref="map">
-        <v-coastal-flood ref="coastalflood"></v-coastal-flood>
       </v-mapbox>
     </div>
   </v-content>
@@ -48,5 +45,13 @@
 #map {
   height: 100vh;
   width: 100vw;
+}
+
+.hidden {
+  display: none;
+}
+
+.returnPeriods {
+
 }
 </style>
