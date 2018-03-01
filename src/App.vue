@@ -18,10 +18,14 @@
   </v-toolbar>
   <v-content>
     <div id="map">
-      <v-mapbox access-token="pk.eyJ1IjoiY2FtdmR2cmllcyIsImEiOiJjajA4NXdpNmswMDB2MzNzMjk4dGM2cnhzIn0.lIwd8N7wf0hx7mq-kjTcbQ" map-style="mapbox://styles/mapbox/satellite-streets-v10" :center="[34.85752836605343, -19.830506337137294]" :zoom="10" :pitch="60" :bearing="-132"
+      <v-mapbox
+      access-token="pk.eyJ1IjoiY2FtdmR2cmllcyIsImEiOiJjajA4NXdpNmswMDB2MzNzMjk4dGM2cnhzIn0.lIwd8N7wf0hx7mq-kjTcbQ"
+      map-style="mapbox://styles/mapbox/streets-v9" :center="[34.85752836605343, -19.830506337137294]" :zoom="10" :pitch="60" :bearing="-132"
         :min-zoom="5" id="map" ref="map">
         <v-hazards></v-hazards>
+        <v-results-layers></v-results-layers>
         <v-exposure-layers></v-exposure-layers>
+
         <div id="popupinfo">
         <v-data-table
             :headers="headers"

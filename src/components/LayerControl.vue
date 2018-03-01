@@ -13,39 +13,6 @@
     </v-list-tile-action>
 
   </v-list-tile>
-  <!-- <v-list dense pt-0 v-for="layer in layers" :key="layer.id" v-if="layer.content=='Hazard'">
-    Hazards
-    <v-divider></v-divider>
-    <v-list-tile>
-      <v-list-tile-action>
-        <v-switch v-model="layer.active"></v-switch>
-      </v-list-tile-action>
-      <v-list-tile-title>
-        <select
-          v-model="selectHazards"
-          label="Select"
-          item-text="name"
-          item-value="name"
-          light single-line auto>
-          <option
-            v-for="json_layer in layer.json_layers"
-            :key="json_layer.id"
-            :value="layer.name">
-          {{ json_layer.name }}
-        </option>
-      </select>
-    </v-list-tile-title>      <v-list-tile-action>
-        <v-icon>{{layer.icon}}</v-icon>
-      </v-list-tile-action>
-    </v-list-tile>
-
-    <div class="bar-wrapper">
-      <div :style="layer.css" class='bar' v-if="layer.css"></div>
-      <div class='bartext'>{{layer.range}} <span class='barspan'> </span> </div>
-      <div class='information' v-html="layer.info">{{layer.info}} </div>
-    </div>
-  </v-list> -->
-
 
   <v-list dense pt-0 v-for="layer in layers" :key="layer.id" v-if="layer.content=='Exposure'">
     School Exposure

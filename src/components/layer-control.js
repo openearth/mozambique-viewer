@@ -65,7 +65,8 @@ export default {
             if (layer.active &&
               (this.returnPeriod === maplayer.returnPeriod ||
                 (this.selectResults === sublayer.name &&
-                  maplayer.hazard === this.selectHazards))) {
+                  maplayer.hazard === this.selectHazards) ||
+                layer.content === "Exposure")) {
               this.map.setLayoutProperty(maplayer.id, "visibility", vis[1]);
             } else {
               this.map.setLayoutProperty(maplayer.id, "visibility", vis[0]);
