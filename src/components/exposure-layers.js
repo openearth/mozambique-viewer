@@ -23,6 +23,7 @@ export default {
 
       var conventional_usd_layers = {
         name: 'Conventional USD',
+        textcolor: "rgba(199, 23, 220, 1)",
         data: [{
           hazard: 'Coastal Flood',
           id: "CF-conventional-usd",
@@ -36,13 +37,15 @@ export default {
           },
           'source-layer': 'CF_conventional_usd-a3oswd',
           'paint': {
-            'fill-color': 'hsla(312, 49%, 39%, 0.4)'
+            'fill-color': 'rgba(199, 23, 220, 0.26)',
+            'fill-outline-color': "rgba(199, 23, 220, 1)"
           }
         }]
       }
 
       var unconventional_usd_layers = {
         name: 'Unconventional USD',
+        textcolor: 'rgba(0, 64, 231, 1)',
         data: [{
           hazard: 'Coastal Flood',
           id: "CF-unconventional-usd",
@@ -56,13 +59,16 @@ export default {
           },
           'source-layer': 'CF_unconventional_usd-bv0i45',
           'paint': {
-            'fill-color': 'hsla(312, 49%, 39%, 0.4)'
+            'fill-color': 'rgba(0, 64, 231, 0.26)',
+            'fill-outline-color': 'rgba(0, 64, 231, 1)'
+
           }
         }]
       }
 
       var unconventional_count_layers = {
         name: 'Unconventional Count',
+        textcolor: 'rgba(52, 220, 58, 1)',
         data: [{
           hazard: 'Coastal Flood',
           id: "CF-unconventional-count",
@@ -76,13 +82,15 @@ export default {
           },
           'source-layer': 'CF_unconventional_count30-dwzjx9',
           'paint': {
-            'fill-color': 'hsla(312, 49%, 39%, 0.4)'
+            'fill-color': 'rgba(52, 220, 58, 0.26)',
+            'fill-outline-color': 'rgba(52, 220, 58, 1)'
           }
         }]
       }
 
       var conventional_count_layers = {
         name: 'Conventional count',
+        textcolor: 'rgba(242, 220, 19, 1)',
         data: [{
           hazard: 'Coastal Flood',
           id: "CF-conventional-count",
@@ -96,13 +104,15 @@ export default {
           },
           'source-layer': 'CF_conventional_count30-887azr',
           'paint': {
-            'fill-color': 'hsla(312, 49%, 39%, 0.4)'
+            'fill-color': 'rgba(242, 220, 19, 0.26)',
+            'fill-outline-color': 'rgba(242, 220, 19, 1)'
           }
         }]
       }
 
       var pupils_layers = {
         name: 'Pupils',
+        textcolor: 'rgba(250, 24, 21, 1)',
         data: [{
           hazard: 'Coastal Flood',
           id: "CF-pupils",
@@ -116,7 +126,8 @@ export default {
           },
           'source-layer': 'CF_pupils-4q3ft2',
           'paint': {
-            'fill-color': 'hsla(312, 49%, 39%, 0.4)'
+            'fill-color': 'rgba(250, 24, 21, 0.26)',
+            'fill-outline-color': 'rgba(250, 24, 21, 1)'
           }
         }]
       }

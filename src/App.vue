@@ -22,7 +22,22 @@
         :min-zoom="5" id="map" ref="map">
         <v-hazards></v-hazards>
         <v-exposure-layers></v-exposure-layers>
-
+        <div id="popupinfo">
+        <v-data-table
+            :headers="headers"
+            :items="items"
+            hide-actions
+            class="elevation-1"
+          >
+            <template slot="items" slot-scope="props">
+              <td>{{ props.item.name }}</td>
+              <td class="text-xs-right">{{ props.item.rp10 }}</td>
+              <td class="text-xs-right">{{ props.item.rp100 }}</td>
+              <td class="text-xs-right">{{ props.item.rp500 }}</td>
+              <td class="text-xs-right">{{ props.item.AED }}</td>
+            </template>
+          </v-data-table>
+        </div>
       </v-mapbox>
     </div>
   </v-content>
@@ -37,6 +52,7 @@
 <style >
 @import 'mapbox-gl/dist/mapbox-gl.css';
 @import 'material-design-icons/iconfont/material-icons.css';
+@import "vue-material-design-icons/styles.css"
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   text-align: center;
