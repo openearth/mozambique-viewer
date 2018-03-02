@@ -16,18 +16,7 @@ export default {
       map: null,
       drawer: null,
       layers: [],
-      headers: [
-        {
-          text: '',
-          align: 'left',
-          sortable: false,
-          value: 'name'
-        },
-        { text: '1/10 year return period', value: 'rp10'},
-        { text: '1/100 year return period', value: 'rp100'},
-        { text: '1/500 year return period', value: 'rp500'},
-        { text: 'Annual Expected Data', value: 'AED'},
-      ],
+      headers: [],
       items: []
     };
   },
@@ -37,6 +26,7 @@ export default {
     var popup = new mapboxgl.Popup({})
     var content = document.getElementById('popupinfo')
     popup.setDOMContent(content)
+
 
     bus.$on('select-layers', (layers) => {
       Vue.set(this, 'layers', layers);
@@ -48,46 +38,102 @@ export default {
 
     // Error, because not all tiles exist in the layers.
     this.map.on('load', (event) => {
+      bus.$emit('map-loaded', this.$refs.map.map)
+      this.map.addControl(new mapboxgl.NavigationControl());
 
       this.map.on('mousemove', (e) => {
-          this.$refs.map.map.getCanvas().style.cursor = '';
-          var features_list = this.map.queryRenderedFeatures(e.point);
-          if (typeof features_list[0] !== 'undefined') {
-            this.$refs.map.map.getCanvas().style.cursor = 'pointer';
-          }
-        })
-
-      bus.$emit('map-loaded', this.$refs.map.map)
-
-      this.map.addControl(new mapboxgl.NavigationControl());
+        this.$refs.map.map.getCanvas().style.cursor = '';
+        var features_list = this.map.queryRenderedFeatures(e.point);
+        if (typeof features_list[0] !== 'undefined') {
+          this.$refs.map.map.getCanvas().style.cursor = 'pointer';
+        }
+      })
 
       // create popup with table with information
       this.map.on('click', (e) => {
+        popup.remove()
         var features = this.map.queryRenderedFeatures(e.point);
         console.log(features)
-        if (features[0].layer['id'] !== "combined-exposure"){
-        popup.remove()
-
-                this.items = [
+        if (features[0].layer['id'] === "combined-exposure") {
+          console.log(features[0].properties['Name'])
+          this.items = [{
+            value: false,
+            name: 'Name',
+            data: features[0].properties['Name'],
+          },
           {
+            value: true,
+            name: 'type',
+            'data': features[0].properties['type'],
+          },
+          {
+            value: false,
+            name: 'Pupils fin',
+            'data': features[0].properties['PUPILS_FIN'],
+          },
+          {
+            value: false,
+            name: 'Total ReCost',
+            'data': features[0].properties['Tot_ReCost'],
+          },
+          {
+            value: false,
+            name: 'UNCON_FINA',
+            'data': features[0].properties['UNCON_FINA'],
+          }]
+          this.headers = [
+          {
+              text: features[0].properties['ADM1_NAME'] + ', ' + features[0].properties['ADM2_NAME'],
+              align: 'left',
+              sortable: false,
+              value: 'name'
+            },
+            {
+              text: 'data',
+              value: 'data'
+            }]
+          popup.setLngLat(e.lngLat)
+            .addTo(this.map)
+        } else if (features[0].layer['id'] !== "combined-exposure") {
+          this.items = [{
             value: false,
             name: features[0].layer['id'],
             'rp10': features[0].properties['10'],
             'rp100': features[0].properties['100'],
             'rp500': features[0].properties['500'],
             'AED': features[0].properties['AED']
-          }
-        ]
-        this.headers[0].text = features[0].properties['ADM1_NAME'] + ', ' + features[0].properties['ADM2_NAME']
-        popup.setLngLat(e.lngLat)
-          .addTo(this.map);
+          }]
+          this.headers =[
+          {
+              text: features[0].properties['ADM1_NAME'] + ', ' + features[0].properties['ADM2_NAME'],
+              align: 'left',
+              sortable: false,
+              value: 'name'
+            },
+            {
+              text: '1/10 year return period',
+              value: 'rp10'
+            },
+            {
+              text: '1/100 year return period',
+              value: 'rp100'
+            },
+            {
+              text: '1/500 year return period',
+              value: 'rp500'
+            },
+            {
+              text: 'Annual Expected Data',
+              value: 'AED'
+            }]
+          popup.setLngLat(e.lngLat)
+            .addTo(this.map);
         }
       });
     });
 
   },
-  watch: {
-  },
+  watch: {},
   methods: {},
   components: {
     'layer-control': LayerControl,

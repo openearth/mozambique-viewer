@@ -40,6 +40,23 @@ export default {
             'fill-color': 'rgba(199, 23, 220, 0.26)',
             'fill-outline-color': "rgba(199, 23, 220, 1)"
           }
+        },
+        {
+          hazard: 'EarthQuake',
+          id: "EQ-conventional-usd",
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'fill',
+          source: {
+            type: 'vector',
+            url: 'mapbox://joaolima.7zimfshz'
+          },
+          'source-layer': 'EQ_conventional_usd-0w18ma',
+          'paint': {
+            'fill-color': 'rgba(199, 23, 220, 0.26)',
+            'fill-outline-color': "rgba(199, 23, 220, 1)"
+          }
         }]
       }
 
@@ -55,9 +72,27 @@ export default {
           type: 'fill',
           source: {
             type: 'vector',
-            url: 'mapbox://joaolima.drs7l8os'
+            url: 'mapbox://joaolima.3sywikko'
           },
-          'source-layer': 'CF_unconventional_usd-bv0i45',
+          'source-layer': 'CF_unconventional_count30-dwzjx9',
+          'paint': {
+            'fill-color': 'rgba(0, 64, 231, 0.26)',
+            'fill-outline-color': 'rgba(0, 64, 231, 1)'
+
+          }
+        },
+        {
+          hazard: 'EarthQuake',
+          id: "EQ-unconventional-usd",
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'fill',
+          source: {
+            type: 'vector',
+            url: 'mapbox://joaolima.5bsudt95'
+          },
+          'source-layer': 'EQ_unconventional_usd-6b4jai',
           'paint': {
             'fill-color': 'rgba(0, 64, 231, 0.26)',
             'fill-outline-color': 'rgba(0, 64, 231, 1)'
@@ -85,6 +120,23 @@ export default {
             'fill-color': 'rgba(52, 220, 58, 0.26)',
             'fill-outline-color': 'rgba(52, 220, 58, 1)'
           }
+        },
+        {
+          hazard: 'EarthQuake',
+          id: "EQ-unconventional-count",
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'fill',
+          source: {
+            type: 'vector',
+            url: 'mapbox://joaolima.0rn8aiji'
+          },
+          'source-layer': 'EQ_unconventional_count-axxh45',
+          'paint': {
+            'fill-color': 'rgba(52, 220, 58, 0.26)',
+            'fill-outline-color': 'rgba(52, 220, 58, 1)'
+          }
         }]
       }
 
@@ -107,6 +159,23 @@ export default {
             'fill-color': 'rgba(242, 220, 19, 0.26)',
             'fill-outline-color': 'rgba(242, 220, 19, 1)'
           }
+        },
+        {
+          hazard: 'EarthQuake',
+          id: "EQ-conventional-count",
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'fill',
+          source: {
+            type: 'vector',
+            url: 'mapbox://joaolima.45biq1lh'
+          },
+          'source-layer': 'EQ_conventional_count-dvud0r',
+          'paint': {
+            'fill-color': 'rgba(242, 220, 19, 0.26)',
+            'fill-outline-color': 'rgba(242, 220, 19, 1)'
+          }
         }]
       }
 
@@ -114,6 +183,23 @@ export default {
         name: 'Pupils',
         textcolor: 'rgba(250, 24, 21, 1)',
         data: [{
+          hazard: 'EarthQuake',
+          id: "EQ-pupils",
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'fill',
+          source: {
+            type: 'vector',
+            url: 'mapbox://joaolima.5ku77z5c'
+          },
+          'source-layer': 'EQ_pupils-9ftcxb',
+          'paint': {
+            'fill-color': 'rgba(250, 24, 21, 0.26)',
+            'fill-outline-color': 'rgba(250, 24, 21, 1)'
+          }
+        },
+        {
           hazard: 'Coastal Flood',
           id: "CF-pupils",
           layout: {
