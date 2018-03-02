@@ -53,36 +53,34 @@ export default {
       this.map.on('click', (e) => {
         popup.remove()
         var features = this.map.queryRenderedFeatures(e.point);
-        console.log(features)
         if (features[0].layer['id'] === "combined-exposure") {
-          console.log(features[0].properties['Name'])
           this.items = [{
-            value: false,
-            name: 'Name',
-            data: features[0].properties['Name'],
-          },
-          {
-            value: true,
-            name: 'type',
-            'data': features[0].properties['type'],
-          },
-          {
-            value: false,
-            name: 'Pupils fin',
-            'data': features[0].properties['PUPILS_FIN'],
-          },
-          {
-            value: false,
-            name: 'Total ReCost',
-            'data': features[0].properties['Tot_ReCost'],
-          },
-          {
-            value: false,
-            name: 'UNCON_FINA',
-            'data': features[0].properties['UNCON_FINA'],
-          }]
-          this.headers = [
-          {
+              value: false,
+              name: 'Name',
+              data: features[0].properties['Name'],
+            },
+            {
+              value: false,
+              name: 'type',
+              'data': features[0].properties['Type'],
+            },
+            {
+              value: false,
+              name: 'Pupils fin',
+              'data': features[0].properties['PUPILS_FIN'],
+            },
+            {
+              value: false,
+              name: 'Total ReCost',
+              'data': features[0].properties['Tot_ReCost'],
+            },
+            {
+              value: false,
+              name: 'UNCON_FINA',
+              'data': features[0].properties['UNCON_FINA'],
+            }
+          ]
+          this.headers = [{
               text: features[0].properties['ADM1_NAME'] + ', ' + features[0].properties['ADM2_NAME'],
               align: 'left',
               sortable: false,
@@ -91,41 +89,46 @@ export default {
             {
               text: 'data',
               value: 'data'
-            }]
+            }
+          ]
           popup.setLngLat(e.lngLat)
             .addTo(this.map)
         } else if (features[0].layer['id'] !== "combined-exposure") {
           this.items = [{
-            value: false,
-            name: features[0].layer['id'],
-            'rp10': features[0].properties['10'],
-            'rp100': features[0].properties['100'],
-            'rp500': features[0].properties['500'],
-            'AED': features[0].properties['AED']
-          }]
-          this.headers =[
-          {
+              value: false,
+              name: "Name",
+              data: features[0].layer['id']
+            },
+            {
+              value: false,
+              name: "Return period: 10 years",
+              data: features[0].properties['10']
+            },
+            {
+              value: false,
+              name: "Return period: 100 years",
+              data: features[0].properties['100']
+            }, {
+              value: false,
+              name: "Return period: 500 years",
+              data: features[0].properties['500']
+            }, {
+              value: false,
+              name: "Annual Expected Damage",
+              data: features[0].properties['AED']
+            },
+          ]
+          this.headers = [{
               text: features[0].properties['ADM1_NAME'] + ', ' + features[0].properties['ADM2_NAME'],
               align: 'left',
               sortable: false,
               value: 'name'
             },
             {
-              text: '1/10 year return period',
-              value: 'rp10'
-            },
-            {
-              text: '1/100 year return period',
-              value: 'rp100'
-            },
-            {
-              text: '1/500 year return period',
-              value: 'rp500'
-            },
-            {
-              text: 'Annual Expected Data',
-              value: 'AED'
-            }]
+              text: 'Data',
+              value: 'data'
+            }
+          ]
           popup.setLngLat(e.lngLat)
             .addTo(this.map);
         }

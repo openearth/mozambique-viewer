@@ -20,7 +20,7 @@
     <div id="map">
       <v-mapbox
       access-token="pk.eyJ1IjoiY2FtdmR2cmllcyIsImEiOiJjajA4NXdpNmswMDB2MzNzMjk4dGM2cnhzIn0.lIwd8N7wf0hx7mq-kjTcbQ"
-      map-style="mapbox://styles/mapbox/streets-v9" :center="[34.85752836605343, -19.830506337137294]" :zoom="10" :pitch="60" :bearing="-132"
+      map-style="mapbox://styles/mapbox/satellite-streets-v10" :center="[34.85752836605343, -19.830506337137294]" :zoom="10" :pitch="60" :bearing="-132"
         :min-zoom="5" id="map" ref="map">
         <v-hazards></v-hazards>
         <v-results-layers></v-results-layers>
@@ -35,10 +35,7 @@
           >
             <template slot="items" slot-scope="props">
               <td>{{ props.item.name }}</td>
-              <td class="text-xs-right">{{ props.item.rp10 }}</td>
-              <td class="text-xs-right">{{ props.item.rp100 }}</td>
-              <td class="text-xs-right">{{ props.item.rp500 }}</td>
-              <td class="text-xs-right">{{ props.item.AED }}</td>
+              <td class="text-xs-right">{{ props.item.data }}</td>
             </template>
           </v-data-table>
         </div>

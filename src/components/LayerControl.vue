@@ -102,6 +102,8 @@
       <div class='information' v-html="layer.info">{{layer.info}} </div>
     </div>
   </v-list>
+  <img id='logos' src='./images/logos.png'>
+
 </div>
 </template>
 
@@ -140,5 +142,12 @@
 
 .legend .list__tile {
   height: 200px;
+}
+
+#logos{
+  position: absolute;
+  bottom: 5vh;
+  left: 5%;
+  width: 90%;
 }
 </style>
