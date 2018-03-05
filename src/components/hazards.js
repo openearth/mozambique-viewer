@@ -38,7 +38,7 @@ export default {
 
       var CF_layers = {
 
-        name: 'Coastal Flood',
+        name: 'Coastal Flood [cm water depth]',
         data: [{
           id: 'CF-layer-25',
           layout: {
@@ -78,14 +78,14 @@ export default {
         }]
       }
       var EQ_layers = {
-        name: 'EarthQuake',
+        name: 'EarthQuake [gal]',
         data: [{
           id: 'EQ-layer-952',
           layout: {
             'visibility': 'none'
           },
           type: 'raster',
-          returnPeriod: 952,
+          returnPeriod: 500,
           source: {
             type: 'raster',
             url: 'mapbox://joaolima.7enpsj6a',
@@ -97,10 +97,10 @@ export default {
             'visibility': 'none'
           },
           type: 'raster',
-          returnPeriod: 3935,
+          returnPeriod: 100,
           source: {
             type: 'raster',
-            url: 'mapbox://joaolima.awl4l0w6',
+            url: 'mapbox://joaolima.0q07e22l',
             tileSize: 256
           }
         }, {
@@ -109,7 +109,7 @@ export default {
             'visibility': 'none'
           },
           type: 'raster',
-          returnPeriod: 8647,
+          returnPeriod: 25,
           source: {
             type: 'raster',
             url: 'mapbox://joaolima.br98oxaa',

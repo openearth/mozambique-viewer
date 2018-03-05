@@ -2,22 +2,22 @@
 <div class="layer-control">
   <v-list-tile>
     <v-list-tile-title>
-      Return period
+      Return period [years]
     </v-list-tile-title>
   </v-list-tile>
   <v-list-tile>
 
     <v-list-tile-sub-title>
-      <v-radio-group v-model="returnPeriod" v-if="selectHazards=='Coastal Flood'">
+      <v-radio-group v-model="returnPeriod">
         <v-layout row>
           <v-radio v-for="n in [25, 100, 500]" :key="n" :label="` ${n}`" :value="n"></v-radio>
         </v-layout>
       </v-radio-group>
-      <v-radio-group v-model="returnPeriod" v-if="selectHazards=='EarthQuake'">
+      <!-- <v-radio-group v-model="returnPeriod" v-if="selectHazards=='EarthQuake [gal]'">
         <v-layout row>
-          <v-radio v-for="n in [952, 3935, 8647]" :key="n" :label="` ${n}`" :value="n"></v-radio>
+          <v-radio v-for="n in [0.0952, 0.3935, 0.8647]" :key="n" :label="` ${n}`" :value="n"></v-radio>
         </v-layout>
-      </v-radio-group>
+      </v-radio-group> -->
     </v-list-tile-sub-title>
   </v-list-tile>
 
@@ -69,11 +69,11 @@
       </v-list-tile-action>
     </v-list-tile>
 
-    <div class="bar-wrapper" v-if="selectHazards=='Coastal Flood'">
+    <div class="bar-wrapper" v-if="selectHazards=='Coastal Flood [cm water depth]'">
       <div :style="layer.css_CF" class='bar' v-if="layer.css_CF"></div>
       <div class='bartext'>{{layer.range_CF}} <span class='barspan'> </span> </div>
     </div>
-    <div class="bar-wrapper" v-if="selectHazards=='EarthQuake'">
+    <div class="bar-wrapper" v-if="selectHazards=='EarthQuake [gal]'">
       <div :style="layer.css_EQ" class='bar' v-if="layer.css_EQ"></div>
       <div class='bartext'>{{layer.range_EQ}} <span class='barspan'> </span> </div>
     </div>
