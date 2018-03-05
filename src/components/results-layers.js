@@ -57,6 +57,23 @@ export default {
             'fill-color': 'rgba(199, 23, 220, 0.26)',
             'fill-outline-color': "rgba(199, 23, 220, 1)"
           }
+        },
+        {
+          hazard: 'River Flood [cm water depth]',
+          id: "RF-conventional-usd",
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'fill',
+          source: {
+            type: 'vector',
+            url: 'mapbox://joaolima.b8gfiiix'
+          },
+          'source-layer': 'RF_conv_usd-8ia3zu',
+          'paint': {
+            'fill-color': 'rgba(199, 23, 220, 0.26)',
+            'fill-outline-color': "rgba(199, 23, 220, 1)"
+          }
         }]
       }
 
@@ -93,6 +110,24 @@ export default {
             url: 'mapbox://joaolima.5bsudt95'
           },
           'source-layer': 'EQ_unconventional_usd-6b4jai',
+          'paint': {
+            'fill-color': 'rgba(0, 64, 231, 0.26)',
+            'fill-outline-color': 'rgba(0, 64, 231, 1)'
+
+          }
+        },
+        {
+          hazard: 'River Flood [cm water depth]',
+          id: "RF-unconventional-usd",
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'fill',
+          source: {
+            type: 'vector',
+            url: 'mapbox://joaolima.a8a53my1'
+          },
+          'source-layer': 'RF_uncon_count-0b8ewj',
           'paint': {
             'fill-color': 'rgba(0, 64, 231, 0.26)',
             'fill-outline-color': 'rgba(0, 64, 231, 1)'
@@ -137,6 +172,23 @@ export default {
             'fill-color': 'rgba(52, 220, 58, 0.26)',
             'fill-outline-color': 'rgba(52, 220, 58, 1)'
           }
+        },
+        {
+          hazard: 'River Flood [cm water depth]',
+          id: "RF-unconventional-count",
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'fill',
+          source: {
+            type: 'vector',
+            url: 'mapbox://joaolima.a8a53my1'
+          },
+          'source-layer': 'RF_uncon_count-0b8ewj',
+          'paint': {
+            'fill-color': 'rgba(52, 220, 58, 0.26)',
+            'fill-outline-color': 'rgba(52, 220, 58, 1)'
+          }
         }]
       }
 
@@ -172,6 +224,23 @@ export default {
             url: 'mapbox://joaolima.45biq1lh'
           },
           'source-layer': 'EQ_conventional_count-dvud0r',
+          'paint': {
+            'fill-color': 'rgba(242, 220, 19, 0.26)',
+            'fill-outline-color': 'rgba(242, 220, 19, 1)'
+          }
+        },
+        {
+          hazard: 'River Flood [cm water depth]',
+          id: "RF-conventional-count",
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'fill',
+          source: {
+            type: 'vector',
+            url: 'mapbox://joaolima.16x683kc'
+          },
+          'source-layer': 'RF_conv_count-5sthv2',
           'paint': {
             'fill-color': 'rgba(242, 220, 19, 0.26)',
             'fill-outline-color': 'rgba(242, 220, 19, 1)'

@@ -77,6 +77,10 @@
       <div :style="layer.css_EQ" class='bar' v-if="layer.css_EQ"></div>
       <div class='bartext'>{{layer.range_EQ}} <span class='barspan'> </span> </div>
     </div>
+    <div class="bar-wrapper" v-if="selectHazards=='River Flood [cm water depth]'">
+      <div :style="layer.css_RF" class='bar' v-if="layer.css_RF"></div>
+      <div class='bartext'>{{layer.range_RF}} <span class='barspan'> </span> </div>
+    </div>
   </v-list>
 
   <v-list dense pt-0 v-for="layer in layers" :key="layer.id" v-if="layer.content=='Results'">
