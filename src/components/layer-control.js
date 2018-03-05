@@ -51,6 +51,7 @@ export default {
     }
   },
   methods: {
+    deferredMountedTo(){},
     toggleLayers() {
       if (_.isNil(this.map)) {
         return;
@@ -61,12 +62,14 @@ export default {
 
       _.each(this.layers, (layer) => {
         _.each(layer.json_layers, (sublayer) => {
+          console.log(sublayer.data)
           _.each(sublayer.data, (maplayer) => {
             if (layer.active &&
               (this.returnPeriod === maplayer.returnPeriod ||
                 (this.selectResults === sublayer.name &&
                   maplayer.hazard === this.selectHazards) ||
                 layer.content === "Exposure")) {
+                  console.log("YAAAAY", maplayer.id)
               this.map.setLayoutProperty(maplayer.id, "visibility", vis[1]);
             } else {
               this.map.setLayoutProperty(maplayer.id, "visibility", vis[0]);

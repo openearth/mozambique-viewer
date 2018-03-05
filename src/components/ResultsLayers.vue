@@ -5,7 +5,7 @@
 <script src="./results-layers.js"></script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .hidden {
+  /* .hidden {
     display: none;
-  }
+  } */
 </style>

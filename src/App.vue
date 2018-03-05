@@ -22,9 +22,10 @@
       access-token="pk.eyJ1IjoiY2FtdmR2cmllcyIsImEiOiJjajA4NXdpNmswMDB2MzNzMjk4dGM2cnhzIn0.lIwd8N7wf0hx7mq-kjTcbQ"
       map-style="mapbox://styles/mapbox/satellite-streets-v10" :center="[34.85752836605343, -19.830506337137294]" :zoom="10" :pitch="60" :bearing="-132"
         :min-zoom="5" id="map" ref="map">
-        <v-hazards></v-hazards>
         <v-results-layers></v-results-layers>
         <v-exposure-layers></v-exposure-layers>
+        <v-hazards></v-hazards>
+
 
         <div id="popupinfo">
         <v-data-table
@@ -56,7 +57,7 @@
 @import "vue-material-design-icons/styles.css"
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  text-align: center;
+  /* text-align: center; */
 }
 
 #map {
@@ -64,11 +65,8 @@
   width: 100vw;
 }
 
-.hidden {
+/* .hidden {
   display: none;
-}
+} */
 
-.returnPeriods {
-
-}
 </style>

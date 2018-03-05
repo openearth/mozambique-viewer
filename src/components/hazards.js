@@ -17,7 +17,7 @@ export default {
       var hazard_layer = {
         name: 'Hazards',
         id: 'hazards',
-        icon: 'priority-high',
+        icon: 'priority_high',
         active: false,
         content: "Hazards",
         json_layers: [],

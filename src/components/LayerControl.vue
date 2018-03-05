@@ -4,33 +4,36 @@
     <v-list-tile-title>
       Return period
     </v-list-tile-title>
-    <v-list-tile-action>
+  </v-list-tile>
+  <v-list-tile>
+
+    <v-list-tile-sub-title>
       <v-radio-group v-model="returnPeriod" v-if="selectHazards=='Coastal Flood'">
-        <v-layout>
+        <v-layout row>
           <v-radio v-for="n in [25, 100, 500]" :key="n" :label="` ${n}`" :value="n"></v-radio>
         </v-layout>
       </v-radio-group>
       <v-radio-group v-model="returnPeriod" v-if="selectHazards=='EarthQuake'">
-        <v-layout>
+        <v-layout row>
           <v-radio v-for="n in [952, 3935, 8647]" :key="n" :label="` ${n}`" :value="n"></v-radio>
         </v-layout>
       </v-radio-group>
-    </v-list-tile-action>
+    </v-list-tile-sub-title>
   </v-list-tile>
 
-    <v-list dense pt-0 v-for="layer in layers" :key="layer.id" v-if="layer.content=='Exposure'">
-      School Exposure
-      <v-divider></v-divider>
-      <v-list-tile>
-        <v-list-tile-action>
-          <v-switch v-model="layer.active"></v-switch>
-        </v-list-tile-action>
-        <v-list-tile-title>{{layer.name}}</v-list-tile-title>
-        <v-list-tile-action>
-          <v-icon>{{layer.icon}}</v-icon>
-        </v-list-tile-action>
-      </v-list-tile>
-    </v-list>
+  <v-list dense pt-0 v-for="layer in layers" :key="layer.id" v-if="layer.content=='Exposure'">
+    School Exposure
+    <v-divider></v-divider>
+    <v-list-tile>
+      <v-list-tile-action>
+        <v-switch v-model="layer.active"></v-switch>
+      </v-list-tile-action>
+      <v-list-tile-title>{{layer.name}}</v-list-tile-title>
+      <v-list-tile-action>
+        <v-icon>{{layer.icon}}</v-icon>
+      </v-list-tile-action>
+    </v-list-tile>
+  </v-list>
 
   <v-list dense pt-0 v-for="layer in layers" :key="layer.id" v-if="layer.content=='Hazards'">
     Hazards
@@ -40,12 +43,19 @@
         <v-switch v-model="layer.active"></v-switch>
       </v-list-tile-action>
       <v-list-tile-title>
-        <select
-          v-model="selectHazards"
-          label="Select"
-          item-text="name"
-          item-value="name"
-          light single-line auto>Select
+        <!-- <v-flex xs6>
+          <v-select v-model="selectHazards"
+          v-for="json_layer in layer.json_layers"
+          label="Select" :items="json_layer.name"
+          :key="json_layer.id"
+          :value="json_layer.name"
+          single-line bottom> </v-select>
+        </v-flex> -->
+        <select v-model="selectHazards"
+        label="Select"
+        item-text="name"
+        item-value="name"
+        light single-line auto>
           <option
             v-for="json_layer in layer.json_layers"
             :key="json_layer.id"
@@ -53,7 +63,7 @@
           {{ json_layer.name }}
         </option>
       </select>
-    </v-list-tile-title>
+      </v-list-tile-title>
       <v-list-tile-action>
         <v-icon>{{layer.icon}}</v-icon>
       </v-list-tile-action>
@@ -77,20 +87,15 @@
         <v-switch v-model="layer.active"></v-switch>
       </v-list-tile-action>
       <v-list-tile-title>
-        <select
-          v-model="selectResults"
-          label="Select"
-          item-text="name"
-          item-value="name"
-          light single-line auto>Select
+        <select v-model="selectResults" label="Select" item-text="name" item-value="name" light single-line auto>
           <option
             v-for="json_layer in layer.json_layers"
-            :key="json_layer.id"
+            :key="json_layer.name"
             :value="json_layer.name">
           {{ json_layer.name }}
         </option>
       </select>
-    </v-list-tile-title>
+      </v-list-tile-title>
       <v-list-tile-action>
         <v-icon>{{layer.icon}}</v-icon>
       </v-list-tile-action>
@@ -144,7 +149,7 @@
   height: 200px;
 }
 
-#logos{
+#logos {
   position: absolute;
   bottom: 5vh;
   left: 5%;

@@ -16,8 +16,8 @@ export default {
       var result_layer = {
         active: false,
         content: 'Results',
-        icon: 'home',
-        id: 'results',
+        icon: 'view_list',
+        id: 'results-id',
         json_layers: []
       }
 
