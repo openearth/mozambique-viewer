@@ -27,21 +27,23 @@
         <v-hazards></v-hazards>
 
 
-        <div id="popupinfo">
-        <v-data-table
-            :headers="headers"
-            :items="items"
-            hide-actions
-            class="elevation-1"
-          >
-            <template slot="items" slot-scope="props">
-              <td>{{ props.item.name }}</td>
-              <td class="text-xs-right">{{ props.item.data }}</td>
-            </template>
-          </v-data-table>
-        </div>
       </v-mapbox>
+
     </div>
+    <div id="popupinfo">
+      <v-data-table
+        :headers="headers"
+        :items="items"
+        hide-actions
+        class="elevation-1"
+        >
+        <template slot="items" slot-scope="props">
+          <td>{{ props.item.name }}</td>
+          <td class="text-xs-right">{{ props.item.data }}</td>
+        </template>
+      </v-data-table>
+    </div>
+
   </v-content>
   <v-footer color="indigo" app>
     <span class="white--text">&copy; 2017</span>
