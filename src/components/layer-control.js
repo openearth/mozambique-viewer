@@ -79,5 +79,26 @@ export default {
 
       });
     }
+  },
+  computed: {
+    hazardLayer () {
+      return _.first(
+        _.filter(this.layers, layer => layer.content === 'Hazards')
+      );
+    },
+    exposureLayer () {
+      return _.first(
+        _.filter(this.layers, layer => layer.content === 'Exposure')
+      );
+    },
+    hazardLayerItems () {
+      return _.map(
+        this.hazardLayer.json_layers,
+        layer => {
+          layer.text = layer.name
+          return layer;
+        }
+      )
+    }
   }
 };
