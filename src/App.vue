@@ -11,6 +11,9 @@
       </v-list>
     </v-toolbar>
     <layer-control :layers="layers" :map="map"></layer-control>
+    <v-spacer></v-spacer>
+    <v-flex>
+    </v-flex>
   </v-navigation-drawer>
   <v-toolbar color="indigo" dark fixed app>
     <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
@@ -45,8 +48,12 @@
     </div>
 
   </v-content>
-  <v-footer color="indigo" app>
-    <span class="white--text">&copy; 2017</span>
+  <v-footer theme="light" app>
+    <span class="indigo--text ml-2">&copy; 2017</span>
+    <v-spacer>
+    </v-spacer>
+    <img class="logos mr-2" src="./components/images/logos.png">
+
   </v-footer>
 </v-app>
 </template>
@@ -63,10 +70,13 @@
 }
 
 #map {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
-
+.logos {
+  max-width: 100%;
+  max-height: 100%;
+}
 /* .hidden {
   display: none;
 } */

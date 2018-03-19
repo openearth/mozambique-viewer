@@ -25,7 +25,7 @@ export default {
         name: 'Conventional USD',
         textcolor: "rgba(199, 23, 220, 1)",
         data: [{
-          hazard: 'Coastal Flood',
+          hazard: 'Coastal Flood [cm water depth]',
           id: "CF-conventional-usd",
           layout: {
             'visibility': 'none'
@@ -42,7 +42,7 @@ export default {
           }
         },
         {
-          hazard: 'EarthQuake',
+          hazard: 'EarthQuake [gal]',
           id: "EQ-conventional-usd",
           layout: {
             'visibility': 'none'
@@ -57,6 +57,23 @@ export default {
             'fill-color': 'rgba(199, 23, 220, 0.26)',
             'fill-outline-color': "rgba(199, 23, 220, 1)"
           }
+        },
+        {
+          hazard: 'River Flood [cm water depth]',
+          id: "RF-conventional-usd",
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'fill',
+          source: {
+            type: 'vector',
+            url: 'mapbox://joaolima.b8gfiiix'
+          },
+          'source-layer': 'RF_conv_usd-8ia3zu',
+          'paint': {
+            'fill-color': 'rgba(199, 23, 220, 0.26)',
+            'fill-outline-color': "rgba(199, 23, 220, 1)"
+          }
         }]
       }
 
@@ -64,7 +81,7 @@ export default {
         name: 'Unconventional USD',
         textcolor: 'rgba(0, 64, 231, 1)',
         data: [{
-          hazard: 'Coastal Flood',
+          hazard: 'Coastal Flood [cm water depth]',
           id: "CF-unconventional-usd",
           layout: {
             'visibility': 'none'
@@ -82,7 +99,7 @@ export default {
           }
         },
         {
-          hazard: 'EarthQuake',
+          hazard: 'EarthQuake [gal]',
           id: "EQ-unconventional-usd",
           layout: {
             'visibility': 'none'
@@ -98,6 +115,24 @@ export default {
             'fill-outline-color': 'rgba(0, 64, 231, 1)'
 
           }
+        },
+        {
+          hazard: 'River Flood [cm water depth]',
+          id: "RF-unconventional-usd",
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'fill',
+          source: {
+            type: 'vector',
+            url: 'mapbox://joaolima.a8a53my1'
+          },
+          'source-layer': 'RF_uncon_count-0b8ewj',
+          'paint': {
+            'fill-color': 'rgba(0, 64, 231, 0.26)',
+            'fill-outline-color': 'rgba(0, 64, 231, 1)'
+
+          }
         }]
       }
 
@@ -105,7 +140,7 @@ export default {
         name: 'Unconventional Count',
         textcolor: 'rgba(52, 220, 58, 1)',
         data: [{
-          hazard: 'Coastal Flood',
+          hazard: 'Coastal Flood [cm water depth]',
           id: "CF-unconventional-count",
           layout: {
             'visibility': 'none'
@@ -122,7 +157,7 @@ export default {
           }
         },
         {
-          hazard: 'EarthQuake',
+          hazard: 'EarthQuake [gal]',
           id: "EQ-unconventional-count",
           layout: {
             'visibility': 'none'
@@ -137,6 +172,23 @@ export default {
             'fill-color': 'rgba(52, 220, 58, 0.26)',
             'fill-outline-color': 'rgba(52, 220, 58, 1)'
           }
+        },
+        {
+          hazard: 'River Flood [cm water depth]',
+          id: "RF-unconventional-count",
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'fill',
+          source: {
+            type: 'vector',
+            url: 'mapbox://joaolima.a8a53my1'
+          },
+          'source-layer': 'RF_uncon_count-0b8ewj',
+          'paint': {
+            'fill-color': 'rgba(52, 220, 58, 0.26)',
+            'fill-outline-color': 'rgba(52, 220, 58, 1)'
+          }
         }]
       }
 
@@ -144,7 +196,7 @@ export default {
         name: 'Conventional count',
         textcolor: 'rgba(242, 220, 19, 1)',
         data: [{
-          hazard: 'Coastal Flood',
+          hazard: 'Coastal Flood [cm water depth]',
           id: "CF-conventional-count",
           layout: {
             'visibility': 'none'
@@ -161,7 +213,7 @@ export default {
           }
         },
         {
-          hazard: 'EarthQuake',
+          hazard: 'EarthQuake [gal]',
           id: "EQ-conventional-count",
           layout: {
             'visibility': 'none'
@@ -176,6 +228,23 @@ export default {
             'fill-color': 'rgba(242, 220, 19, 0.26)',
             'fill-outline-color': 'rgba(242, 220, 19, 1)'
           }
+        },
+        {
+          hazard: 'River Flood [cm water depth]',
+          id: "RF-conventional-count",
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'fill',
+          source: {
+            type: 'vector',
+            url: 'mapbox://joaolima.16x683kc'
+          },
+          'source-layer': 'RF_conv_count-5sthv2',
+          'paint': {
+            'fill-color': 'rgba(242, 220, 19, 0.26)',
+            'fill-outline-color': 'rgba(242, 220, 19, 1)'
+          }
         }]
       }
 
@@ -183,7 +252,7 @@ export default {
         name: 'Pupils',
         textcolor: 'rgba(250, 24, 21, 1)',
         data: [{
-          hazard: 'EarthQuake',
+          hazard: 'EarthQuake [gal]',
           id: "EQ-pupils",
           layout: {
             'visibility': 'none'
@@ -200,7 +269,7 @@ export default {
           }
         },
         {
-          hazard: 'Coastal Flood',
+          hazard: 'Coastal Flood [cm water depth]',
           id: "CF-pupils",
           layout: {
             'visibility': 'none'
@@ -227,7 +296,9 @@ export default {
 
       _.each(all_layers, (menu_layer) => {
         result_layer.json_layers.push(menu_layer)
-        this.map.addLayer(menu_layer.data[0]);
+        _.each(menu_layer.data, (sublayer) => {
+          this.map.addLayer(sublayer);
+        })
       })
 
       bus.$emit('add-layer', result_layer);

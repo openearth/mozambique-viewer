@@ -62,14 +62,13 @@ export default {
 
       _.each(this.layers, (layer) => {
         _.each(layer.json_layers, (sublayer) => {
-          console.log(sublayer.data)
           _.each(sublayer.data, (maplayer) => {
             if (layer.active &&
-              (this.returnPeriod === maplayer.returnPeriod ||
+              ((this.returnPeriod === maplayer.returnPeriod &&
+                sublayer.name === this.selectHazards) ||
                 (this.selectResults === sublayer.name &&
                   maplayer.hazard === this.selectHazards) ||
                 layer.content === "Exposure")) {
-                  console.log("YAAAAY", maplayer.id)
               this.map.setLayoutProperty(maplayer.id, "visibility", vis[1]);
             } else {
               this.map.setLayoutProperty(maplayer.id, "visibility", vis[0]);
@@ -91,9 +90,24 @@ export default {
         _.filter(this.layers, layer => layer.content === 'Exposure')
       );
     },
+    resultsLayer () {
+      return _.first(
+        _.filter(this.layers, layer => layer.content === 'Results')
+      );
+    },
     hazardLayerItems () {
       return _.map(
         this.hazardLayer.json_layers,
+        layer => {
+          // v-select expects a .text
+          layer.text = layer.name
+          return layer;
+        }
+      )
+    },
+    resultsLayerItems () {
+      return _.map(
+        this.resultsLayer.json_layers,
         layer => {
           layer.text = layer.name
           return layer;
