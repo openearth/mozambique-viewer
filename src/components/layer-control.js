@@ -59,16 +59,22 @@ export default {
       // Function to toggle the visibility of the layers.
       var vis = ['none', 'visible']
       var types = ['Hazards', 'Results', 'Exposure']
-
+      console.log('return', this.returnPeriod)
       _.each(this.layers, (layer) => {
         _.each(layer.json_layers, (sublayer) => {
           _.each(sublayer.data, (maplayer) => {
-            if (layer.active &&
-              ((this.returnPeriod === maplayer.returnPeriod &&
-                sublayer.name === this.selectHazards) ||
-                (this.selectResults === sublayer.name &&
-                  maplayer.hazard === this.selectHazards) ||
-                layer.content === "Exposure")) {
+            if (
+              layer.active &&
+                (
+                  (
+                    this.returnPeriod === maplayer.returnPeriod &&
+                      sublayer.name === this.selectHazards
+                  ) || (
+                    this.selectResults === sublayer.name &&
+                      maplayer.hazard === this.selectHazards
+                  ) || layer.content === "Exposure"
+                )
+            ) {
               this.map.setLayoutProperty(maplayer.id, "visibility", vis[1]);
             } else {
               this.map.setLayoutProperty(maplayer.id, "visibility", vis[0]);

@@ -2,7 +2,7 @@
   <div class="layer-control">
     <v-container fluid >
       <v-layout column wrap >
-        <v-flex v-if="selectHazards" mt-3>
+        <v-flex mt-3>
           Return period
           <v-divider></v-divider>
           <v-radio-group v-model="returnPeriod">
@@ -124,7 +124,7 @@
   height: 200px;
   }
 
-  .select-items .input-group__details {
+/*  .select-items .input-group__details {
   display: none;
   }
   .select-items.input-group {
@@ -137,5 +137,5 @@
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   }
-
+*/
 </style>
