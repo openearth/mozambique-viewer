@@ -51,29 +51,29 @@ export default {
     }
   },
   methods: {
-    deferredMountedTo(){},
+    deferredMountedTo() {},
     toggleLayers() {
       if (_.isNil(this.map)) {
         return;
       }
       // Function to toggle the visibility of the layers.
+
       var vis = ['none', 'visible']
       var types = ['Hazards', 'Results', 'Exposure']
-      console.log('return', this.returnPeriod)
       _.each(this.layers, (layer) => {
         _.each(layer.json_layers, (sublayer) => {
           _.each(sublayer.data, (maplayer) => {
             if (
               layer.active &&
+              (
                 (
-                  (
-                    this.returnPeriod === maplayer.returnPeriod &&
-                      sublayer.name === this.selectHazards
-                  ) || (
-                    this.selectResults === sublayer.name &&
-                      maplayer.hazard === this.selectHazards
-                  ) || layer.content === "Exposure"
-                )
+                  this.returnPeriod === maplayer.returnPeriod &&
+                  sublayer.name === this.selectHazards.text
+                ) || (
+                  this.selectResults.text === sublayer.name &&
+                  maplayer.hazard === this.selectHazards.text
+                ) || layer.content === "Exposure"
+              )
             ) {
               this.map.setLayoutProperty(maplayer.id, "visibility", vis[1]);
             } else {
@@ -86,22 +86,22 @@ export default {
     }
   },
   computed: {
-    hazardLayer () {
+    hazardLayer() {
       return _.first(
         _.filter(this.layers, layer => layer.content === 'Hazards')
       );
     },
-    exposureLayer () {
+    exposureLayer() {
       return _.first(
         _.filter(this.layers, layer => layer.content === 'Exposure')
       );
     },
-    resultsLayer () {
+    resultsLayer() {
       return _.first(
         _.filter(this.layers, layer => layer.content === 'Results')
       );
     },
-    hazardLayerItems () {
+    hazardLayerItems() {
       return _.map(
         this.hazardLayer.json_layers,
         layer => {
@@ -111,7 +111,7 @@ export default {
         }
       )
     },
-    resultsLayerItems () {
+    resultsLayerItems() {
       return _.map(
         this.resultsLayer.json_layers,
         layer => {
