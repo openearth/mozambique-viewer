@@ -51,7 +51,6 @@ export default {
 
       // create popup with table with information
       this.map.on('click', (e) => {
-        console.log(this.layers)
         popup.remove()
         var features = this.map.queryRenderedFeatures(e.point);
         if (features[0].layer['id'] === "combined-exposure") {

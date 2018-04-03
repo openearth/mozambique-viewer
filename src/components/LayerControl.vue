@@ -55,6 +55,10 @@
               <div :style="hazardLayer.css_RF" class="bar" v-if="hazardLayer.css_RF"></div>
               <div class="bartext">{{hazardLayer.range_RF}} <span class="barspan"> </span> </div>
             </div>
+            <div class="bar-wrapper" v-if="selectHazards.text === 'Cyclone Wind [m/s]'">
+              <div :style="hazardLayer.css_CW" class="bar" v-if="hazardLayer.css_CW"></div>
+              <div class="bartext">{{hazardLayer.range_CW}} <span class="barspan"> </span> </div>
+            </div>
 
 
           </v-flex>
@@ -79,8 +83,6 @@
               >
             </v-select>
           </v-flex>
-
-
         </v-flex>
       </v-layout>
     </v-container>

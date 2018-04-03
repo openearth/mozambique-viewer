@@ -63,26 +63,35 @@ export default {
       _.each(this.layers, (layer) => {
         _.each(layer.json_layers, (sublayer) => {
           _.each(sublayer.data, (maplayer) => {
-            if (
-              layer.active &&
-              (
+            if (this.selectHazards !== null) {
+              if (
+                layer.active &&
                 (
                   this.returnPeriod === maplayer.returnPeriod &&
                   sublayer.name === this.selectHazards.text
-                ) || (
-                  this.selectResults.text === sublayer.name &&
-                  maplayer.hazard === this.selectHazards.text
-                ) || layer.content === "Exposure"
-              )
-            ) {
+                )
+              ) {
+                this.map.setLayoutProperty(maplayer.id, "visibility", vis[1]);
+              } else {
+                this.map.setLayoutProperty(maplayer.id, "visibility", vis[0]);
+              }
+            } else if (this.selectResults !== null && this.selectHazards !== null) {
+              if (
+                this.selectResults.text === sublayer.name &&
+                maplayer.hazard === this.selectHazards.text
+              ) {
+                this.map.setLayoutProperty(maplayer.id, "visibility", vis[1]);
+              } else {
+                this.map.setLayoutProperty(maplayer.id, "visibility", vis[0]);
+              }
+            } else if (layer.active && layer.content === "Exposure") {
               this.map.setLayoutProperty(maplayer.id, "visibility", vis[1]);
             } else {
               this.map.setLayoutProperty(maplayer.id, "visibility", vis[0]);
             }
           })
         })
-
-      });
+      })
     }
   },
   computed: {
