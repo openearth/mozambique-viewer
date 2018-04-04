@@ -1,162 +1,143 @@
 <template>
-<div class="layer-control">
-  <v-list-tile>
-    <v-list-tile-title>
-      Return period [years]
-    </v-list-tile-title>
-  </v-list-tile>
-  <v-list-tile>
+  <div class="layer-control">
+    <v-container fluid >
+      <v-layout column wrap >
+        <v-flex mt-3>
+          Return period
+          <v-divider></v-divider>
+          <v-radio-group v-model="returnPeriod">
+            <v-layout row>
+              <v-radio v-for="n in [25, 100, 500]" :key="n" :label="` ${n}`" :value="n"></v-radio>
+            </v-layout>
+          </v-radio-group>
+        </v-flex>
+        <v-flex v-if="exposureLayer" mt-3>
+          School Exposure
+          <v-divider></v-divider>
+          <v-layout row wrap >
+            <v-flex xs10>
+              <v-switch v-model="exposureLayer.active" :label="exposureLayer.name" hide-details></v-switch>
+            </v-flex>
+            <v-flex xs2><v-icon>{{exposureLayer.icon}}</v-icon></v-flex>
+          </v-layout>
+        </v-flex>
+        <v-flex v-if="hazardLayer" mt-3>
+          Hazards
+          <v-divider></v-divider>
+          <v-layout row wrap >
+            <v-flex xs10>
 
-    <v-list-tile-sub-title>
-      <v-radio-group v-model="returnPeriod">
-        <v-layout row>
-          <v-radio v-for="n in [25, 100, 500]" :key="n" :label="` ${n}`" :value="n"></v-radio>
-        </v-layout>
-      </v-radio-group>
-      <!-- <v-radio-group v-model="returnPeriod" v-if="selectHazards=='EarthQuake [gal]'">
-        <v-layout row>
-          <v-radio v-for="n in [0.0952, 0.3935, 0.8647]" :key="n" :label="` ${n}`" :value="n"></v-radio>
-        </v-layout>
-      </v-radio-group> -->
-    </v-list-tile-sub-title>
-  </v-list-tile>
+              <v-switch v-model="hazardLayer.active" label="Hazard" hide-details></v-switch>
+            </v-flex>
+            <v-flex xs2><v-icon>{{hazardLayer.icon}}</v-icon></v-flex>
+          </v-layout>
+          <v-flex>
+            <v-select
+              v-model="selectHazards"
+              :items="hazardLayerItems"
+              label="Select"
+              single-line
+              bottom
+              class="select-items"
+              >
+            </v-select>
+          </v-flex>
+          <v-flex v-if="selectHazards">
+            <div class="bar-wrapper" v-if="selectHazards.text === 'Coastal Flood [cm water depth]'">
+              <div :style="hazardLayer.css_CF" class="bar" v-if="hazardLayer.css_CF"></div>
+              <div class="bartext">{{hazardLayer.range_CF}} <span class="barspan"> </span> </div>
+            </div>
+            <div class="bar-wrapper" v-if="selectHazards.text === 'EarthQuake [gal]'">
+              <div :style="hazardLayer.css_EQ" class="bar" v-if="hazardLayer.css_EQ"></div>
+              <div class="bartext">{{hazardLayer.range_EQ}} <span class="barspan"> </span> </div>
+            </div>
+            <div class="bar-wrapper" v-if="selectHazards.text === 'River Flood [cm water depth]'">
+              <div :style="hazardLayer.css_RF" class="bar" v-if="hazardLayer.css_RF"></div>
+              <div class="bartext">{{hazardLayer.range_RF}} <span class="barspan"> </span> </div>
+            </div>
+            <div class="bar-wrapper" v-if="selectHazards.text === 'Cyclone Wind [m/s]'">
+              <div :style="hazardLayer.css_CW" class="bar" v-if="hazardLayer.css_CW"></div>
+              <div class="bartext">{{hazardLayer.range_CW}} <span class="barspan"> </span> </div>
+            </div>
 
-  <v-list dense pt-0 v-for="layer in layers" :key="layer.id" v-if="layer.content=='Exposure'">
-    School Exposure
-    <v-divider></v-divider>
-    <v-list-tile>
-      <v-list-tile-action>
-        <v-switch v-model="layer.active"></v-switch>
-      </v-list-tile-action>
-      <v-list-tile-title>{{layer.name}}</v-list-tile-title>
-      <v-list-tile-action>
-        <v-icon>{{layer.icon}}</v-icon>
-      </v-list-tile-action>
-    </v-list-tile>
-  </v-list>
 
-  <v-list dense pt-0 v-for="layer in layers" :key="layer.id" v-if="layer.content=='Hazards'">
-    Hazards
-    <v-divider></v-divider>
-    <v-list-tile>
-      <v-list-tile-action>
-        <v-switch v-model="layer.active"></v-switch>
-      </v-list-tile-action>
-      <v-list-tile-title>
-        <!-- <v-flex xs6>
-          <v-select v-model="selectHazards"
-          v-for="json_layer in layer.json_layers"
-          label="Select" :items="json_layer.name"
-          :key="json_layer.id"
-          :value="json_layer.name"
-          single-line bottom> </v-select>
-        </v-flex> -->
-        <select v-model="selectHazards"
-        label="Select"
-        item-text="name"
-        item-value="name"
-        light single-line auto>
-          <option
-            v-for="json_layer in layer.json_layers"
-            :key="json_layer.id"
-            :value="json_layer.name">
-          {{ json_layer.name }}
-        </option>
-      </select>
-      </v-list-tile-title>
-      <v-list-tile-action>
-        <v-icon>{{layer.icon}}</v-icon>
-      </v-list-tile-action>
-    </v-list-tile>
-
-    <div class="bar-wrapper" v-if="selectHazards=='Coastal Flood [cm water depth]'">
-      <div :style="layer.css_CF" class='bar' v-if="layer.css_CF"></div>
-      <div class='bartext'>{{layer.range_CF}} <span class='barspan'> </span> </div>
-    </div>
-    <div class="bar-wrapper" v-if="selectHazards=='EarthQuake [gal]'">
-      <div :style="layer.css_EQ" class='bar' v-if="layer.css_EQ"></div>
-      <div class='bartext'>{{layer.range_EQ}} <span class='barspan'> </span> </div>
-    </div>
-    <div class="bar-wrapper" v-if="selectHazards=='River Flood [cm water depth]'">
-      <div :style="layer.css_RF" class='bar' v-if="layer.css_RF"></div>
-      <div class='bartext'>{{layer.range_RF}} <span class='barspan'> </span> </div>
-    </div>
-  </v-list>
-
-  <v-list dense pt-0 v-for="layer in layers" :key="layer.id" v-if="layer.content=='Results'">
-    Results
-    <v-divider></v-divider>
-    <v-list-tile>
-      <v-list-tile-action>
-        <v-switch v-model="layer.active"></v-switch>
-      </v-list-tile-action>
-      <v-list-tile-title>
-        <select v-model="selectResults" label="Select" item-text="name" item-value="name" light single-line auto>
-          <option
-            v-for="json_layer in layer.json_layers"
-            :key="json_layer.name"
-            :value="json_layer.name">
-          {{ json_layer.name }}
-        </option>
-      </select>
-      </v-list-tile-title>
-      <v-list-tile-action>
-        <v-icon>{{layer.icon}}</v-icon>
-      </v-list-tile-action>
-    </v-list-tile>
-
-    <div class="bar-wrapper">
-      <div :style="layer.css" class='bar' v-if="layer.css"></div>
-      <div class='bartext'>{{layer.range}} <span class='barspan'> </span> </div>
-      <div class='information' v-html="layer.info">{{layer.info}} </div>
-    </div>
-  </v-list>
-  <img id='logos' src='./images/logos.png'>
-
-</div>
+          </v-flex>
+        </v-flex>
+        <v-flex v-if="resultsLayer" mt-3>
+          Results
+          <v-divider></v-divider>
+          <v-layout row wrap >
+            <v-flex xs10>
+              <v-switch v-model="resultsLayer.active" label="Results" hide-details></v-switch>
+            </v-flex>
+            <v-flex xs2><v-icon>{{resultsLayer.icon}}</v-icon></v-flex>
+          </v-layout>
+          <v-flex>
+            <v-select
+              v-model="selectResults"
+              :items="resultsLayerItems"
+              label="Select"
+              single-line
+              bottom
+              class="select-items"
+              >
+            </v-select>
+          </v-flex>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </div>
 </template>
 
 <script src="./layer-control.js"></script>
 
 <style>
-.bartext {
+  .bartext {
   text-align: justify;
   width: 100%;
   clear: left;
-}
+  }
 
-.bar {
+  .bar {
   width: 100%;
   height: 10px;
-}
+  }
 
-.barspan {
+  .barspan {
   width: 100%;
 
   display: inline-block;
-}
+  }
 
-.information {
+  .information {
   /* TODO: remove span trick? */
   margin-top: -1rem;
   text-align: left;
-}
+  }
 
-.bar-wrapper {
+  .bar-wrapper {
   padding: 0 16px;
   display: block;
   width: 100%;
   margin-bottom: 10px;
-}
+  }
 
-.legend .list__tile {
+  .legend .list__tile {
   height: 200px;
-}
+  }
 
-#logos {
-  position: absolute;
-  bottom: 5vh;
-  left: 5%;
-  width: 90%;
-}
+/*  .select-items .input-group__details {
+  display: none;
+  }
+  .select-items.input-group {
+  padding-top: 0;
+  }
+  .select-items .input-group--text-field label {
+   top: 0;
+  }
+  .select-items {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  }
+*/
 </style>

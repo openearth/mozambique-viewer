@@ -1,6 +1,6 @@
 {
-  "name": "mozambique-viewer",
-  "version": "1.0.0",
+  "name": "safer-schools",
+  "version": "0.2.0",
   "description": "A viewer for the safer schools project in Mozambique",
   "author": "CindyvdVries <cindyvdvries@gmail.com>",
   "private": true,
@@ -12,6 +12,7 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js",
+    "build:gh-pages": "cross-env PUBLIC_PATH=safer-schools node build/build.js",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {

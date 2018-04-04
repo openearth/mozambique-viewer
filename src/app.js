@@ -5,7 +5,7 @@ import {
 import Vue from 'vue';
 import mapboxgl from 'mapbox-gl';
 import LayerControl from './components/LayerControl';
-import Hazards from './components/Hazards';
+import Hazards from './components/VHazards';
 import ResultsLayers from './components/ResultsLayers';
 import exposureLayers from './components/exposureLayers';
 

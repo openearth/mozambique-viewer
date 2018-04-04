@@ -51,32 +51,83 @@ export default {
     }
   },
   methods: {
-    deferredMountedTo(){},
+    deferredMountedTo() {},
     toggleLayers() {
       if (_.isNil(this.map)) {
         return;
       }
       // Function to toggle the visibility of the layers.
+
       var vis = ['none', 'visible']
       var types = ['Hazards', 'Results', 'Exposure']
-
       _.each(this.layers, (layer) => {
         _.each(layer.json_layers, (sublayer) => {
           _.each(sublayer.data, (maplayer) => {
-            if (layer.active &&
-              ((this.returnPeriod === maplayer.returnPeriod &&
-                sublayer.name === this.selectHazards) ||
-                (this.selectResults === sublayer.name &&
-                  maplayer.hazard === this.selectHazards) ||
-                layer.content === "Exposure")) {
+            if (this.selectHazards !== null) {
+              if (
+                layer.active &&
+                (
+                  this.returnPeriod === maplayer.returnPeriod &&
+                  sublayer.name === this.selectHazards.text
+                )
+              ) {
+                this.map.setLayoutProperty(maplayer.id, "visibility", vis[1]);
+              } else {
+                this.map.setLayoutProperty(maplayer.id, "visibility", vis[0]);
+              }
+            } else if (this.selectResults !== null && this.selectHazards !== null) {
+              if (
+                this.selectResults.text === sublayer.name &&
+                maplayer.hazard === this.selectHazards.text
+              ) {
+                this.map.setLayoutProperty(maplayer.id, "visibility", vis[1]);
+              } else {
+                this.map.setLayoutProperty(maplayer.id, "visibility", vis[0]);
+              }
+            } else if (layer.active && layer.content === "Exposure") {
               this.map.setLayoutProperty(maplayer.id, "visibility", vis[1]);
             } else {
               this.map.setLayoutProperty(maplayer.id, "visibility", vis[0]);
             }
           })
         })
-
-      });
+      })
+    }
+  },
+  computed: {
+    hazardLayer() {
+      return _.first(
+        _.filter(this.layers, layer => layer.content === 'Hazards')
+      );
+    },
+    exposureLayer() {
+      return _.first(
+        _.filter(this.layers, layer => layer.content === 'Exposure')
+      );
+    },
+    resultsLayer() {
+      return _.first(
+        _.filter(this.layers, layer => layer.content === 'Results')
+      );
+    },
+    hazardLayerItems() {
+      return _.map(
+        this.hazardLayer.json_layers,
+        layer => {
+          // v-select expects a .text
+          layer.text = layer.name
+          return layer;
+        }
+      )
+    },
+    resultsLayerItems() {
+      return _.map(
+        this.resultsLayer.json_layers,
+        layer => {
+          layer.text = layer.name
+          return layer;
+        }
+      )
     }
   }
 };

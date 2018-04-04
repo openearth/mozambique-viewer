@@ -35,7 +35,12 @@ export default {
             #d94d3d, #cc4248, #bf3952, #b0315b, #a02a63, #902568, #801f6c, #71196e,\
             #61136e, #510e6c, #400a67, #2f0a5b, #1e0c45, #10092d, #050417, #000004)",
         range_RF: '0 1200',
-        css_RF: "background: linear-gradient(to right, #ffffd4,#fed98e,#fe9929, #d95f0e, #993404"
+        css_RF: "background: linear-gradient(to right, #ffffd4,#fed98e,#fe9929, #d95f0e, #993404)",
+        range_CW: '0 45',
+        css_CW: "background: linear-gradient(to right, #fde725,#d7e22a,#b0dd2f, #89d548, #65cb5e, \
+          #46c06f, #2eb37c, #21a585, #1f978b, #23898e, #297b8e, #2e6d8e, #355e8d, #3d4e8a, #433d84, \
+          #472a7a, #481769, #440154)"
+
       }
 
       var CF_layers = {
@@ -159,9 +164,51 @@ export default {
           }
         }]
       }
+      var CW_layers = {
+        name: 'Cyclone Wind [m/s]',
+        data: [{
+          id: 'CW-layer-500',
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 500,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.9bn8xy0d',
+            tileSize: 256
+          }
+        }, {
+          id: 'CW-layer-100',
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 100,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.cvx0czbd',
+            tileSize: 256
+          }
+        }, {
+          id: 'CW-layer-25',
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 25,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.79j4lz37',
+            tileSize: 256
+          }
+        }]
+      }
+
       hazard_layer.json_layers.push(CF_layers)
       hazard_layer.json_layers.push(EQ_layers)
       hazard_layer.json_layers.push(RF_layers)
+      hazard_layer.json_layers.push(CW_layers)
 
       _.each(CF_layers.data, (CF_layer) => {
         map.addLayer(CF_layer);
@@ -173,7 +220,11 @@ export default {
       _.each(RF_layers.data, (RF_layer) => {
         map.addLayer(RF_layer);
       })
-      console.log('hazard_layer', hazard_layer)
+
+      _.each(CW_layers.data, (CW_layer) => {
+        map.addLayer(CW_layer);
+      })
+
       bus.$emit('add-layer', hazard_layer);
     }
   }
