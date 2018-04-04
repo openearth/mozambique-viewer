@@ -2,6 +2,7 @@ import {
   bus
 } from '@/event-bus.js';
 
+import 'babel-polyfill';
 import Vue from 'vue';
 import mapboxgl from 'mapbox-gl';
 import LayerControl from './components/LayerControl';

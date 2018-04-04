@@ -16,6 +16,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "css-loader": "^0.28.10",
     "gh-pages": "^1.1.0",
     "jquery": "^3.3.1",

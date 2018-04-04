@@ -36,7 +36,7 @@ export default {
             #61136e, #510e6c, #400a67, #2f0a5b, #1e0c45, #10092d, #050417, #000004)",
         range_RF: '0 1200',
         css_RF: "background: linear-gradient(to right, #ffffd4,#fed98e,#fe9929, #d95f0e, #993404)",
-        range_CW: '0 45',
+        range_CW: '15 45',
         css_CW: "background: linear-gradient(to right, #fde725,#d7e22a,#b0dd2f, #89d548, #65cb5e, \
           #46c06f, #2eb37c, #21a585, #1f978b, #23898e, #297b8e, #2e6d8e, #355e8d, #3d4e8a, #433d84, \
           #472a7a, #481769, #440154)"
