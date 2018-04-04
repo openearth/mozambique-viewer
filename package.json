@@ -1,6 +1,6 @@
 {
   "name": "safer-schools",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "A viewer for the safer schools project in Mozambique",
   "author": "CindyvdVries <cindyvdvries@gmail.com>",
   "private": true,
