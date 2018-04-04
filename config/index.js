@@ -50,7 +50,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/mozambique-viewer/',
+    assetsPublicPath: '/' + (process.env.PUBLIC_PATH ? process.env.PUBLIC_PATH + '/' : ''),
 
     /**
      * Source Maps
