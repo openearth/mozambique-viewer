@@ -13,19 +13,13 @@ export default {
   mounted() {},
   methods: {
     deferredMountedTo(map) {
-      var result_layer = {
-        active: false,
-        content: 'Results',
-        icon: 'view_list',
-        id: 'results-id',
-        json_layers: []
-      }
-
-      var conventional_usd_layers = {
-        name: 'Conventional USD',
-        textcolor: "rgba(199, 23, 220, 1)",
-        data: [{
-          hazard: 'Coastal Flood [cm water depth]',
+      this.map = map
+      const layers = [
+        {
+          properties: {
+            hazard: 'Coastal Flood [cm water depth]',
+            result: 'Conventional USD'
+          },
           id: "CF-conventional-usd",
           layout: {
             'visibility': 'none'
@@ -42,8 +36,11 @@ export default {
           }
         },
         {
-          hazard: 'EarthQuake [gal]',
           id: "EQ-conventional-usd",
+          properties: {
+            hazard: 'EarthQuake [gal]',
+            result: 'Conventional USD',
+          },
           layout: {
             'visibility': 'none'
           },
@@ -59,8 +56,11 @@ export default {
           }
         },
         {
-          hazard: 'River Flood [cm water depth]',
           id: "RF-conventional-usd",
+          properties: {
+            result: 'Conventional USD',
+            hazard: 'River Flood [cm water depth]'
+          },
           layout: {
             'visibility': 'none'
           },
@@ -74,15 +74,13 @@ export default {
             'fill-color': 'rgba(199, 23, 220, 0.26)',
             'fill-outline-color': "rgba(199, 23, 220, 1)"
           }
-        }]
-      }
-
-      var unconventional_usd_layers = {
-        name: 'Unconventional USD',
-        textcolor: 'rgba(0, 64, 231, 1)',
-        data: [{
-          hazard: 'Coastal Flood [cm water depth]',
+        },
+        {
           id: "CF-unconventional-usd",
+          properties: {
+            result: 'Unconventional USD',
+            hazard: 'Coastal Flood [cm water depth]'
+          },
           layout: {
             'visibility': 'none'
           },
@@ -95,12 +93,14 @@ export default {
           'paint': {
             'fill-color': 'rgba(0, 64, 231, 0.26)',
             'fill-outline-color': 'rgba(0, 64, 231, 1)'
-
           }
         },
         {
-          hazard: 'EarthQuake [gal]',
           id: "EQ-unconventional-usd",
+          properties: {
+            hazard: 'EarthQuake [gal]',
+            result: 'Unconventional USD'
+          },
           layout: {
             'visibility': 'none'
           },
@@ -113,12 +113,14 @@ export default {
           'paint': {
             'fill-color': 'rgba(0, 64, 231, 0.26)',
             'fill-outline-color': 'rgba(0, 64, 231, 1)'
-
           }
         },
         {
-          hazard: 'River Flood [cm water depth]',
           id: "RF-unconventional-usd",
+          properties: {
+            hazard: 'River Flood [cm water depth]',
+            result: 'Unconventional USD'
+          },
           layout: {
             'visibility': 'none'
           },
@@ -131,17 +133,14 @@ export default {
           'paint': {
             'fill-color': 'rgba(0, 64, 231, 0.26)',
             'fill-outline-color': 'rgba(0, 64, 231, 1)'
-
           }
-        }]
-      }
-
-      var unconventional_count_layers = {
-        name: 'Unconventional Count',
-        textcolor: 'rgba(52, 220, 58, 1)',
-        data: [{
-          hazard: 'Coastal Flood [cm water depth]',
+        },
+        {
           id: "CF-unconventional-count",
+          properties: {
+            hazard: 'Coastal Flood [cm water depth]',
+            result: 'Unconventional Count'
+          },
           layout: {
             'visibility': 'none'
           },
@@ -157,8 +156,11 @@ export default {
           }
         },
         {
-          hazard: 'EarthQuake [gal]',
           id: "EQ-unconventional-count",
+          properties: {
+            hazard: 'EarthQuake [gal]',
+            result: 'Unconventional Count'
+          },
           layout: {
             'visibility': 'none'
           },
@@ -174,8 +176,11 @@ export default {
           }
         },
         {
-          hazard: 'River Flood [cm water depth]',
           id: "RF-unconventional-count",
+          properties: {
+            hazard: 'River Flood [cm water depth]',
+            result: 'Unconventional Count'
+          },
           layout: {
             'visibility': 'none'
           },
@@ -189,15 +194,13 @@ export default {
             'fill-color': 'rgba(52, 220, 58, 0.26)',
             'fill-outline-color': 'rgba(52, 220, 58, 1)'
           }
-        }]
-      }
-
-      var conventional_count_layers = {
-        name: 'Conventional count',
-        textcolor: 'rgba(242, 220, 19, 1)',
-        data: [{
-          hazard: 'Coastal Flood [cm water depth]',
+        },
+        {
           id: "CF-conventional-count",
+          properties: {
+            hazard: 'Coastal Flood [cm water depth]',
+            result: 'Conventional count'
+          },
           layout: {
             'visibility': 'none'
           },
@@ -213,8 +216,11 @@ export default {
           }
         },
         {
-          hazard: 'EarthQuake [gal]',
           id: "EQ-conventional-count",
+          properties: {
+            hazard: 'EarthQuake [gal]',
+            result: 'Conventional count'
+          },
           layout: {
             'visibility': 'none'
           },
@@ -230,8 +236,11 @@ export default {
           }
         },
         {
-          hazard: 'River Flood [cm water depth]',
           id: "RF-conventional-count",
+          properties: {
+            hazard: 'River Flood [cm water depth]',
+            result: 'Conventional count'
+          },
           layout: {
             'visibility': 'none'
           },
@@ -245,15 +254,13 @@ export default {
             'fill-color': 'rgba(242, 220, 19, 0.26)',
             'fill-outline-color': 'rgba(242, 220, 19, 1)'
           }
-        }]
-      }
-
-      var pupils_layers = {
-        name: 'Pupils',
-        textcolor: 'rgba(250, 24, 21, 1)',
-        data: [{
-          hazard: 'EarthQuake [gal]',
+        },
+        {
           id: "EQ-pupils",
+          properties: {
+            hazard: 'EarthQuake [gal]',
+            result: 'Pupils'
+          },
           layout: {
             'visibility': 'none'
           },
@@ -269,8 +276,11 @@ export default {
           }
         },
         {
-          hazard: 'Coastal Flood [cm water depth]',
           id: "CF-pupils",
+          properties: {
+            hazard: 'Coastal Flood [cm water depth]',
+            result: 'Pupils'
+          },
           layout: {
             'visibility': 'none'
           },
@@ -284,24 +294,21 @@ export default {
             'fill-color': 'rgba(250, 24, 21, 0.26)',
             'fill-outline-color': 'rgba(250, 24, 21, 1)'
           }
-        }]
+        }
+      ]
+
+      const resultDataset = {
+        active: false,
+        content: 'Results',
+        icon: 'view_list',
+        id: 'results-id',
+        layers: layers
       }
 
-      this.map = map
-      var all_layers = [conventional_usd_layers,
-        unconventional_usd_layers,
-        conventional_count_layers,
-        unconventional_count_layers,
-        pupils_layers]
-
-      _.each(all_layers, (menu_layer) => {
-        result_layer.json_layers.push(menu_layer)
-        _.each(menu_layer.data, (sublayer) => {
-          this.map.addLayer(sublayer);
-        })
+      _.each(layers, (layer) => {
+        this.map.addLayer(layer);
       })
-
-      bus.$emit('add-layer', result_layer);
+      bus.$emit('add-layer', resultDataset);
 
 
     }
