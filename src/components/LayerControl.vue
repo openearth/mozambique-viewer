@@ -43,19 +43,19 @@
             </v-select>
           </v-flex>
           <v-flex v-if="selectHazards">
-            <div class="bar-wrapper" v-if="selectHazards.text === 'Coastal Flood [cm water depth]'">
+            <div class="bar-wrapper" v-if="selectHazards.value === 'Coastal Flood'">
               <div :style="hazardLayer.css_CF" class="bar" v-if="hazardLayer.css_CF"></div>
               <div class="bartext">{{hazardLayer.range_CF}} <span class="barspan"> </span> </div>
             </div>
-            <div class="bar-wrapper" v-if="selectHazards.text === 'EarthQuake [gal]'">
+            <div class="bar-wrapper" v-if="selectHazards.value === 'EarthQuake'">
               <div :style="hazardLayer.css_EQ" class="bar" v-if="hazardLayer.css_EQ"></div>
               <div class="bartext">{{hazardLayer.range_EQ}} <span class="barspan"> </span> </div>
             </div>
-            <div class="bar-wrapper" v-if="selectHazards.text === 'River Flood [cm water depth]'">
+            <div class="bar-wrapper" v-if="selectHazards.value === 'River Flood'">
               <div :style="hazardLayer.css_RF" class="bar" v-if="hazardLayer.css_RF"></div>
               <div class="bartext">{{hazardLayer.range_RF}} <span class="barspan"> </span> </div>
             </div>
-            <div class="bar-wrapper" v-if="selectHazards.text === 'Cyclone Wind [m/s]'">
+            <div class="bar-wrapper" v-if="selectHazards.value === 'Cyclone Wind'">
               <div :style="hazardLayer.css_CW" class="bar" v-if="hazardLayer.css_CW"></div>
               <div class="bartext">{{hazardLayer.range_CW}} <span class="barspan"> </span> </div>
             </div>

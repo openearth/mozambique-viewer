@@ -103,7 +103,7 @@ export default {
             return;
           }
           // if we have a hazard and it's differnt from the current hazard, we're disabled
-          if (_.has(layer, 'properties.hazard') && layer.properties.hazard !== this.selectHazards.text) {
+          if (_.has(layer, 'properties.hazard') && layer.properties.hazard !== this.selectHazards.value) {
             return;
           }
 
@@ -134,11 +134,11 @@ export default {
 
 
           // if we have a hazard and it's differnt from the current hazard, we're disabled
-          if (_.has(layer, 'properties.hazard') && layer.properties.hazard !== this.selectHazards.text) {
+          if (_.has(layer, 'properties.hazard') && layer.properties.hazard !== this.selectHazards.value) {
             return;
           }
           // if we have a result and it's different from the current return result, we're disabled
-          if (_.has(layer, 'properties.result') && layer.properties['result'] !== this.selectResults.text) {
+          if (_.has(layer, 'properties.result') && layer.properties.result !== this.selectResults.value) {
             return;
           }
 
@@ -169,7 +169,8 @@ export default {
         this.hazardLayer.layers,
         layer => {
           let result = {
-            text: layer.properties.hazard
+            text: layer.properties.hazard,
+            value: layer.properties.hazard
           }
           return result;
         }
@@ -182,7 +183,9 @@ export default {
         this.resultsLayer.layers,
         layer => {
           let result = {
-            text: layer.properties.result
+            text: layer.properties.result,
+            value: layer.properties.result
+
           }
           return result;
         }

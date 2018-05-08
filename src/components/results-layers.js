@@ -17,7 +17,8 @@ export default {
       const layers = [
         {
           properties: {
-            hazard: 'Coastal Flood [cm water depth]',
+            hazard: 'Coastal Flood',
+            unit: 'cm water depth',
             result: 'Conventional USD'
           },
           id: "CF-conventional-usd",
@@ -38,8 +39,9 @@ export default {
         {
           id: "EQ-conventional-usd",
           properties: {
-            hazard: 'EarthQuake [gal]',
-            result: 'Conventional USD',
+            hazard: 'EarthQuake',
+            unit: 'gal',
+            result: 'Conventional USD'
           },
           layout: {
             'visibility': 'none'
@@ -58,8 +60,9 @@ export default {
         {
           id: "RF-conventional-usd",
           properties: {
-            result: 'Conventional USD',
-            hazard: 'River Flood [cm water depth]'
+            hazard: 'River Flood',
+            unit: 'cm water depth',
+            result: 'Conventional USD'
           },
           layout: {
             'visibility': 'none'
@@ -78,8 +81,8 @@ export default {
         {
           id: "CF-unconventional-usd",
           properties: {
-            result: 'Unconventional USD',
-            hazard: 'Coastal Flood [cm water depth]'
+            hazard: 'Coastal Flood [cm water depth]',
+            result: 'Unconventional USD'
           },
           layout: {
             'visibility': 'none'
@@ -98,7 +101,8 @@ export default {
         {
           id: "EQ-unconventional-usd",
           properties: {
-            hazard: 'EarthQuake [gal]',
+            hazard: 'EarthQuake',
+            unit: 'gal',
             result: 'Unconventional USD'
           },
           layout: {
@@ -118,7 +122,8 @@ export default {
         {
           id: "RF-unconventional-usd",
           properties: {
-            hazard: 'River Flood [cm water depth]',
+            hazard: 'River Flood',
+            unit: 'cm water depth',
             result: 'Unconventional USD'
           },
           layout: {
@@ -138,7 +143,8 @@ export default {
         {
           id: "CF-unconventional-count",
           properties: {
-            hazard: 'Coastal Flood [cm water depth]',
+            hazard: 'Coastal Flood',
+            unit: 'cm water depth',
             result: 'Unconventional Count'
           },
           layout: {
@@ -158,7 +164,8 @@ export default {
         {
           id: "EQ-unconventional-count",
           properties: {
-            hazard: 'EarthQuake [gal]',
+            hazard: 'EarthQuake',
+            unit: 'gal',
             result: 'Unconventional Count'
           },
           layout: {
@@ -198,7 +205,8 @@ export default {
         {
           id: "CF-conventional-count",
           properties: {
-            hazard: 'Coastal Flood [cm water depth]',
+            hazard: 'Coastal Flood',
+            unit: 'cm water depth',
             result: 'Conventional count'
           },
           layout: {
@@ -218,7 +226,8 @@ export default {
         {
           id: "EQ-conventional-count",
           properties: {
-            hazard: 'EarthQuake [gal]',
+            hazard: 'EarthQuake',
+            unit: 'gal',
             result: 'Conventional count'
           },
           layout: {
@@ -258,7 +267,8 @@ export default {
         {
           id: "EQ-pupils",
           properties: {
-            hazard: 'EarthQuake [gal]',
+            hazard: 'EarthQuake',
+            unit: 'gal',
             result: 'Pupils'
           },
           layout: {
@@ -278,7 +288,8 @@ export default {
         {
           id: "CF-pupils",
           properties: {
-            hazard: 'Coastal Flood [cm water depth]',
+            hazard: 'Coastal Flood',
+            unit: 'cm water depth',
             result: 'Pupils'
           },
           layout: {
