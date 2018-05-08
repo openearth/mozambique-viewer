@@ -103,7 +103,7 @@ export default {
             return;
           }
           // if we have a hazard and it's differnt from the current hazard, we're disabled
-          if (_.has(layer, 'properties.hazard') && layer.properties.hazard !== this.selectHazards.value) {
+          if (_.has(layer, 'properties.hazard') && layer.properties.hazard !== this.selectHazards) {
             return;
           }
 
@@ -134,11 +134,11 @@ export default {
 
 
           // if we have a hazard and it's differnt from the current hazard, we're disabled
-          if (_.has(layer, 'properties.hazard') && layer.properties.hazard !== this.selectHazards.value) {
+          if (_.has(layer, 'properties.hazard') && layer.properties.hazard !== this.selectHazards) {
             return;
           }
           // if we have a result and it's different from the current return result, we're disabled
-          if (_.has(layer, 'properties.result') && layer.properties.result !== this.selectResults.value) {
+          if (_.has(layer, 'properties.result') && layer.properties.result !== this.selectResults) {
             return;
           }
 
@@ -165,6 +165,9 @@ export default {
       );
     },
     hazardLayerItems() {
+      if (_.isNil(this.hazardLayer)) {
+        return []
+      }
       let labels = _.map(
         this.hazardLayer.layers,
         layer => {
@@ -179,6 +182,9 @@ export default {
       return uniqueLabels;
     },
     resultsLayerItems() {
+      if (_.isNil(this.resultsLayer)) {
+        return []
+      }
       let labels = _.map(
         this.resultsLayer.layers,
         layer => {
