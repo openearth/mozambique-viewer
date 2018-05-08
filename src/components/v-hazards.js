@@ -13,14 +13,234 @@ export default {
   mounted() {},
   methods: {
     deferredMountedTo(map) {
+      var layers =  [
+        {
+          id: 'CF-layer-25',
+          properties: {
+            'return-period': 25,
+            hazard: 'Coastal Flood',
+            unit: 'cm water depth'
+          },
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 25,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.588zuz9x',
+            tileSize: 256
+          }
+        },
+        {
+          id: 'CF-layer-100',
+          properties: {
+            'return-period': 100,
+            hazard: 'Coastal Flood',
+            unit: 'cm water depth'
+          },
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 100,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.awl4l0w6',
+            tileSize: 256
+          }
+        },
+        {
+          id: 'CF-layer-500',
+          properties: {
+            'return-period': 500,
+            hazard: 'Coastal Flood',
+            unit: 'cm water depth'
+          },
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 500,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.84gdnnj5',
+            tileSize: 256
+          }
+        },
+        {
+          id: 'EQ-layer-952',
+          properties: {
+            hazard: 'EarthQuake',
+            'return-period': 25,
+            unit: 'gal'
+          },
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 500,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.7enpsj6a',
+            tileSize: 256
+          }
+        },
+        {
+          id: 'EQ-layer-3935',
+          properties: {
+            hazard: 'EarthQuake',
+            'return-period': 100,
+            unit: 'gal'
+          },
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 100,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.0q07e22l',
+            tileSize: 256
+          }
+        }, {
+          id: 'EQ-layer-8647',
+          properties: {
+            hazard: 'EarthQuake',
+            'return-period': 500,
+            unit: 'gal'
+          },
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 25,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.br98oxaa',
+            tileSize: 256
+          }
+        },
+        {
+          id: 'RF-layer-500',
+          properties: {
+            hazard: 'River Flood',
+            'return-period': 500,
+            unit: 'cm water depth'
+          },
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 500,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.chj1ng8v',
+            tileSize: 256
+          }
+        },
+        {
+          id: 'RF-layer-100',
+          properties: {
+            hazard: 'River Flood',
+            'return-period': 100,
+            unit: 'cm water depth'
+          },
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 100,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.c06txkrf',
+            tileSize: 256
+          }
+        }, {
+          id: 'RF-layer-25',
+          properties: {
+            hazard: 'River Flood',
+            'return-period': 25,
+            unit: 'cm water depth'
+          },
 
-      var hazard_layer = {
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 25,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.dc2ne2bi',
+            tileSize: 256
+          }
+        },
+        {
+          id: 'CW-layer-500',
+          properties: {
+            hazard: 'Cyclone Wind',
+            'return-period': 500,
+            unit: 'm/s'
+          },
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 500,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.9bn8xy0d',
+            tileSize: 256
+          }
+        }, {
+          id: 'CW-layer-100',
+          properties: {
+            hazard: 'Cyclone Wind',
+            'return-period': 100,
+            unit: 'm/s'
+          },
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 100,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.cvx0czbd',
+            tileSize: 256
+          }
+        },
+        {
+          id: 'CW-layer-25',
+          properties: {
+            hazard: 'Cyclone Wind',
+            'return-period': 25,
+            unit: 'm/s'
+          },
+          layout: {
+            'visibility': 'none'
+          },
+          type: 'raster',
+          returnPeriod: 25,
+          source: {
+            type: 'raster',
+            url: 'mapbox://joaolima.79j4lz37',
+            tileSize: 256
+          }
+        }
+      ]
+
+      _.each(layers, (layer) => {
+        map.addLayer(layer);
+      })
+
+      var hazardDataset = {
         name: 'Hazards',
         id: 'hazards',
         icon: 'priority_high',
         active: false,
         content: "Hazards",
-        json_layers: [],
+        layers: layers,
         range_CF: '0 700',
         css_CF: "background: linear-gradient(to right, \
           rgba(247,251,255,40), \
@@ -43,189 +263,7 @@ export default {
 
       }
 
-      var CF_layers = {
-
-        name: 'Coastal Flood [cm water depth]',
-        data: [{
-          id: 'CF-layer-25',
-          layout: {
-            'visibility': 'none'
-          },
-          type: 'raster',
-          returnPeriod: 25,
-          source: {
-            type: 'raster',
-            url: 'mapbox://joaolima.588zuz9x',
-            tileSize: 256
-          }
-        }, {
-          id: 'CF-layer-100',
-          layout: {
-            'visibility': 'none'
-          },
-          type: 'raster',
-          returnPeriod: 100,
-          source: {
-            type: 'raster',
-            url: 'mapbox://joaolima.awl4l0w6',
-            tileSize: 256
-          }
-        }, {
-          id: 'CF-layer-500',
-          layout: {
-            'visibility': 'none'
-          },
-          type: 'raster',
-          returnPeriod: 500,
-          source: {
-            type: 'raster',
-            url: 'mapbox://joaolima.84gdnnj5',
-            tileSize: 256
-          }
-        }]
-      }
-      var EQ_layers = {
-        name: 'EarthQuake [gal]',
-        data: [{
-          id: 'EQ-layer-952',
-          layout: {
-            'visibility': 'none'
-          },
-          type: 'raster',
-          returnPeriod: 500,
-          source: {
-            type: 'raster',
-            url: 'mapbox://joaolima.7enpsj6a',
-            tileSize: 256
-          }
-        }, {
-          id: 'EQ-layer-3935',
-          layout: {
-            'visibility': 'none'
-          },
-          type: 'raster',
-          returnPeriod: 100,
-          source: {
-            type: 'raster',
-            url: 'mapbox://joaolima.0q07e22l',
-            tileSize: 256
-          }
-        }, {
-          id: 'EQ-layer-8647',
-          layout: {
-            'visibility': 'none'
-          },
-          type: 'raster',
-          returnPeriod: 25,
-          source: {
-            type: 'raster',
-            url: 'mapbox://joaolima.br98oxaa',
-            tileSize: 256
-          }
-        }]
-      }
-      var RF_layers = {
-        name: 'River Flood [cm water depth]',
-        data: [{
-          id: 'RF-layer-500',
-          layout: {
-            'visibility': 'none'
-          },
-          type: 'raster',
-          returnPeriod: 500,
-          source: {
-            type: 'raster',
-            url: 'mapbox://joaolima.chj1ng8v',
-            tileSize: 256
-          }
-        }, {
-          id: 'RF-layer-100',
-          layout: {
-            'visibility': 'none'
-          },
-          type: 'raster',
-          returnPeriod: 100,
-          source: {
-            type: 'raster',
-            url: 'mapbox://joaolima.c06txkrf',
-            tileSize: 256
-          }
-        }, {
-          id: 'RF-layer-25',
-          layout: {
-            'visibility': 'none'
-          },
-          type: 'raster',
-          returnPeriod: 25,
-          source: {
-            type: 'raster',
-            url: 'mapbox://joaolima.dc2ne2bi',
-            tileSize: 256
-          }
-        }]
-      }
-      var CW_layers = {
-        name: 'Cyclone Wind [m/s]',
-        data: [{
-          id: 'CW-layer-500',
-          layout: {
-            'visibility': 'none'
-          },
-          type: 'raster',
-          returnPeriod: 500,
-          source: {
-            type: 'raster',
-            url: 'mapbox://joaolima.9bn8xy0d',
-            tileSize: 256
-          }
-        }, {
-          id: 'CW-layer-100',
-          layout: {
-            'visibility': 'none'
-          },
-          type: 'raster',
-          returnPeriod: 100,
-          source: {
-            type: 'raster',
-            url: 'mapbox://joaolima.cvx0czbd',
-            tileSize: 256
-          }
-        }, {
-          id: 'CW-layer-25',
-          layout: {
-            'visibility': 'none'
-          },
-          type: 'raster',
-          returnPeriod: 25,
-          source: {
-            type: 'raster',
-            url: 'mapbox://joaolima.79j4lz37',
-            tileSize: 256
-          }
-        }]
-      }
-
-      hazard_layer.json_layers.push(CF_layers)
-      hazard_layer.json_layers.push(EQ_layers)
-      hazard_layer.json_layers.push(RF_layers)
-      hazard_layer.json_layers.push(CW_layers)
-
-      _.each(CF_layers.data, (CF_layer) => {
-        map.addLayer(CF_layer);
-      })
-
-      _.each(EQ_layers.data, (EQ_layer) => {
-        map.addLayer(EQ_layer);
-      })
-      _.each(RF_layers.data, (RF_layer) => {
-        map.addLayer(RF_layer);
-      })
-
-      _.each(CW_layers.data, (CW_layer) => {
-        map.addLayer(CW_layer);
-      })
-
-      bus.$emit('add-layer', hazard_layer);
+      bus.$emit('add-layer', hazardDataset);
     }
   }
 

@@ -58,40 +58,94 @@ export default {
       }
       // Function to toggle the visibility of the layers.
 
-      var vis = ['none', 'visible']
-      var types = ['Hazards', 'Results', 'Exposure']
-      _.each(this.layers, (layer) => {
-        _.each(layer.json_layers, (sublayer) => {
-          _.each(sublayer.data, (maplayer) => {
-            if (this.selectHazards !== null) {
-              if (
-                layer.active &&
-                (
-                  this.returnPeriod === maplayer.returnPeriod &&
-                  sublayer.name === this.selectHazards.text
-                )
-              ) {
-                this.map.setLayoutProperty(maplayer.id, "visibility", vis[1]);
-              } else {
-                this.map.setLayoutProperty(maplayer.id, "visibility", vis[0]);
-              }
-            } else if (this.selectResults !== null && this.selectHazards !== null) {
-              if (
-                this.selectResults.text === sublayer.name &&
-                maplayer.hazard === this.selectHazards.text
-              ) {
-                this.map.setLayoutProperty(maplayer.id, "visibility", vis[1]);
-              } else {
-                this.map.setLayoutProperty(maplayer.id, "visibility", vis[0]);
-              }
-            } else if (layer.active && layer.content === "Exposure") {
-              this.map.setLayoutProperty(maplayer.id, "visibility", vis[1]);
-            } else {
-              this.map.setLayoutProperty(maplayer.id, "visibility", vis[0]);
-            }
-          })
-        })
-      })
+      var visibility = {
+        true: 'visible',
+        false: 'none'
+
+      }
+
+      _.each(
+        this.exposureLayer.layers,
+        (layer) => {
+          // by default disable
+          this.map.setLayoutProperty(layer.id, "visibility", visibility.false)
+
+          // return if we're not active not
+          if (!this.exposureLayer.active) {
+            // we're done
+            return;
+          }
+
+          // if we made it this far we're visible
+          this.map.setLayoutProperty(layer.id, "visibility", visibility.true)
+
+        }
+      )
+
+      _.each(
+        this.hazardLayer.layers,
+        (layer) => {
+          // By default disable
+          this.map.setLayoutProperty(layer.id, "visibility", visibility.false)
+
+          // return if we're not active not
+          if (!this.hazardLayer.active) {
+            // we're done
+            return;
+          }
+
+          if (!this.selectHazards) {
+            return;
+          }
+
+          // if we have a return period and it's different from the current return period, we're disabled
+          if (_.has(layer, 'properties.return-period') && layer.properties['return-period'] !== this.returnPeriod) {
+            return;
+          }
+          // if we have a hazard and it's differnt from the current hazard, we're disabled
+          if (_.has(layer, 'properties.hazard') && layer.properties.hazard !== this.selectHazards) {
+            return;
+          }
+
+          // if we made it this far we're visible
+          this.map.setLayoutProperty(layer.id, "visibility", visibility.true)
+        }
+      )
+
+      _.each(
+        this.resultsLayer.layers,
+        (layer) => {
+          // by default disable
+          this.map.setLayoutProperty(layer.id, "visibility", visibility.false)
+
+          // return if we're not active not
+          if (!this.resultsLayer.active) {
+            // we're done
+            return;
+          }
+
+          if (!this.selectResults) {
+            return;
+          }
+
+          if (!this.selectHazards) {
+            return;
+          }
+
+
+          // if we have a hazard and it's differnt from the current hazard, we're disabled
+          if (_.has(layer, 'properties.hazard') && layer.properties.hazard !== this.selectHazards) {
+            return;
+          }
+          // if we have a result and it's different from the current return result, we're disabled
+          if (_.has(layer, 'properties.result') && layer.properties.result !== this.selectResults) {
+            return;
+          }
+
+          // if we made it this far we're visible
+          this.map.setLayoutProperty(layer.id, "visibility", visibility.true)
+        }
+      )
     }
   },
   computed: {
@@ -111,23 +165,39 @@ export default {
       );
     },
     hazardLayerItems() {
-      return _.map(
-        this.hazardLayer.json_layers,
+      if (_.isNil(this.hazardLayer)) {
+        return []
+      }
+      let labels = _.map(
+        this.hazardLayer.layers,
         layer => {
-          // v-select expects a .text
-          layer.text = layer.name
-          return layer;
+          let result = {
+            text: layer.properties.hazard,
+            value: layer.properties.hazard
+          }
+          return result;
         }
       )
+      let uniqueLabels = _.uniqBy(labels, 'text');
+      return uniqueLabels;
     },
     resultsLayerItems() {
-      return _.map(
-        this.resultsLayer.json_layers,
+      if (_.isNil(this.resultsLayer)) {
+        return []
+      }
+      let labels = _.map(
+        this.resultsLayer.layers,
         layer => {
-          layer.text = layer.name
-          return layer;
+          let result = {
+            text: layer.properties.result,
+            value: layer.properties.result
+
+          }
+          return result;
         }
       )
+      let uniqueLabels = _.uniqBy(labels, 'text');
+      return uniqueLabels;
     }
   }
 };

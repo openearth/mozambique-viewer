@@ -13,20 +13,14 @@ export default {
   mounted() {},
   methods: {
     deferredMountedTo(map) {
-      var result_layer = {
-        active: false,
-        content: 'Exposure',
-        icon: 'home',
-        id: 'results',
-        name: 'Combined exposure',
-        json_layers: []
-      }
+      this.map = map
 
-      var exposure_layer = {
-        name: 'Combined exposure',
-        textcolor: "rgba(199, 23, 220, 1)",
-        data: [{
+      var layers = [
+        {
           id: "combined-exposure",
+          properties: {
+            name: 'Combined exposure'
+          },
           layout: {
             'visibility': 'none'
           },
@@ -37,15 +31,23 @@ export default {
           },
           'source-layer': 'Combined_Exposure-3noze9',
           'paint': {}
-        }]
+        }
+      ]
+
+      var exposureDataset = {
+        active: false,
+        content: 'Exposure',
+        icon: 'home',
+        id: 'results',
+        name: 'Combined exposure',
+        layers: layers
       }
-      this.map = map
 
+      _.each(layers, (layer) => {
+        this.map.addLayer(layer);
+      })
 
-      result_layer.json_layers.push(exposure_layer)
-      this.map.addLayer(exposure_layer.data[0]);
-
-      bus.$emit('add-layer', result_layer);
+      bus.$emit('add-layer', exposureDataset);
 
 
     }
