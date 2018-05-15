@@ -20,11 +20,11 @@
   </v-toolbar>
   <v-content>
     <div id="map">
-      <v-mapbox access-token="pk.eyJ1IjoiY2FtdmR2cmllcyIsImEiOiJjajA4NXdpNmswMDB2MzNzMjk4dGM2cnhzIn0.lIwd8N7wf0hx7mq-kjTcbQ" map-style="mapbox://styles/mapbox/satellite-streets-v10" :center="[34.85752836605343, -19.830506337137294]" :zoom="10" :pitch="60" :bearing="-132"
+      <v-mapbox :access-token="accessToken" map-style="mapbox://styles/mapbox/satellite-streets-v10" :center="[34.85752836605343, -19.830506337137294]" :zoom="10" :pitch="60" :bearing="-132"
         :min-zoom="5" id="map" ref="map">
-        <v-results-layers></v-results-layers>
-        <v-exposure-layers></v-exposure-layers>
-        <v-hazards></v-hazards>
+        <v-results-layers :access-token="accessToken"></v-results-layers>
+        <v-exposure-layers :access-token="accessToken"></v-exposure-layers>
+        <v-hazards :access-token="accessToken"></v-hazards>
       </v-mapbox>
     </div>
     <div id="popupinfo">

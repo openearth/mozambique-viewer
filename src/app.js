@@ -14,6 +14,7 @@ export default {
   name: 'app',
   data: function() {
     return {
+      accessToken: 'pk.eyJ1IjoiY2FtdmR2cmllcyIsImEiOiJjajA4NXdpNmswMDB2MzNzMjk4dGM2cnhzIn0.lIwd8N7wf0hx7mq-kjTcbQ',
       map: null,
       drawer: null,
       layers: [],

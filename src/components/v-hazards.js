@@ -5,6 +5,7 @@ import {
 
 export default {
   name: 'v-hazards',
+  props: ['access-token'],
   data() {
     return {
       map: null,
@@ -28,7 +29,9 @@ export default {
           returnPeriod: 25,
           source: {
             type: 'raster',
-            url: 'mapbox://joaolima.588zuz9x',
+            tiles: [
+              `https://api.mapbox.com/v4/joaolima.588zuz9x/{z}/{x}/{y}.png?access_token=${this.accessToken}`
+            ],
             tileSize: 256
           }
         },
@@ -46,7 +49,9 @@ export default {
           returnPeriod: 100,
           source: {
             type: 'raster',
-            url: 'mapbox://joaolima.awl4l0w6',
+            tiles: [
+              `https://api.mapbox.com/v4/joaolima.awl4l0w6/{z}/{x}/{y}.png?access_token=${this.accessToken}`
+            ],
             tileSize: 256
           }
         },
@@ -64,8 +69,9 @@ export default {
           returnPeriod: 500,
           source: {
             type: 'raster',
-            url: 'mapbox://joaolima.84gdnnj5',
-            tileSize: 256
+            tiles: [
+              `https://api.mapbox.com/v4/joaolima.84gdnnj5/{z}/{x}/{y}.png?access_token=${this.accessToken}`
+            ]
           }
         },
         {
@@ -82,7 +88,9 @@ export default {
           returnPeriod: 500,
           source: {
             type: 'raster',
-            url: 'mapbox://joaolima.7enpsj6a',
+            tiles: [
+              `https://api.mapbox.com/v4/joaolima.7enpsj6a/{z}/{x}/{y}.png?access_token=${this.accessToken}`
+            ],
             tileSize: 256
           }
         },
@@ -100,7 +108,9 @@ export default {
           returnPeriod: 100,
           source: {
             type: 'raster',
-            url: 'mapbox://joaolima.0q07e22l',
+            tiles: [
+              `https://api.mapbox.com/v4/joaolima.0q07e22l/{z}/{x}/{y}.png?access_token=${this.accessToken}`
+            ],
             tileSize: 256
           }
         }, {
@@ -117,7 +127,9 @@ export default {
           returnPeriod: 25,
           source: {
             type: 'raster',
-            url: 'mapbox://joaolima.br98oxaa',
+            tiles: [
+              `https://api.mapbox.com/v4/joaolima.br98oxaa/{z}/{x}/{y}.png?access_token=${this.accessToken}`
+            ],
             tileSize: 256
           }
         },
@@ -135,7 +147,9 @@ export default {
           returnPeriod: 500,
           source: {
             type: 'raster',
-            url: 'mapbox://joaolima.chj1ng8v',
+            tiles: [
+              `https://api.mapbox.com/v4/joaolima.chj1ng8v/{z}/{x}/{y}.png?access_token=${this.accessToken}`
+            ],
             tileSize: 256
           }
         },
@@ -153,7 +167,9 @@ export default {
           returnPeriod: 100,
           source: {
             type: 'raster',
-            url: 'mapbox://joaolima.c06txkrf',
+            tiles: [
+              `https://api.mapbox.com/v4/joaolima.c06txkrf/{z}/{x}/{y}.png?access_token=${this.accessToken}`
+            ],
             tileSize: 256
           }
         }, {
@@ -171,7 +187,9 @@ export default {
           returnPeriod: 25,
           source: {
             type: 'raster',
-            url: 'mapbox://joaolima.dc2ne2bi',
+            tiles: [
+              `https://api.mapbox.com/v4/joaolima.dc2ne2bi/{z}/{x}/{y}.png?access_token=${this.accessToken}`
+            ],
             tileSize: 256
           }
         },
@@ -189,7 +207,9 @@ export default {
           returnPeriod: 500,
           source: {
             type: 'raster',
-            url: 'mapbox://joaolima.9bn8xy0d',
+            tiles: [
+              `https://api.mapbox.com/v4/joaolima.9bn8xy0d/{z}/{x}/{y}.png?access_token=${this.accessToken}`
+            ],
             tileSize: 256
           }
         }, {
@@ -206,7 +226,9 @@ export default {
           returnPeriod: 100,
           source: {
             type: 'raster',
-            url: 'mapbox://joaolima.cvx0czbd',
+            tiles: [
+              `https://api.mapbox.com/v4/joaolima.cvx0czbd/{z}/{x}/{y}.png?access_token=${this.accessToken}`
+            ],
             tileSize: 256
           }
         },
@@ -224,7 +246,9 @@ export default {
           returnPeriod: 25,
           source: {
             type: 'raster',
-            url: 'mapbox://joaolima.79j4lz37',
+            tiles: [
+              `https://api.mapbox.com/v4/joaolima.79j4lz37/{z}/{x}/{y}.png?access_token=${this.accessToken}`
+            ],
             tileSize: 256
           }
         }
